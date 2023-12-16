@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex flex-row">
+        <div class="sidebar-area w-2/12 flex justify-center ">
+            <div class="sidebar flex flex-col w-20 mt-5 fixed justify-between text-center rounded-full shadow-lg" style="background-color: #7537D8; height: 35rem;">
+                <a href="">
+                    <div class="relative inline-flex items-center justify-center w-16 mt-3 h-16  overflow-hidden bg-gray-100 rounded-full ">
+                        <img src="https://i.pinimg.com/564x/03/39/27/033927806d11bab51c919cd265b6960b.jpg" alt="">
+                    </div>
+                </a>
+                <a href="layout.html" class="relative inline-flex items-center justify-center">
+                    <img src="/public/icons/Home.svg" class="w-10" alt="">
+                </a>
+                <a href="courses.html" class="relative inline-flex items-center justify-center">
+                    <img src="/public/icons/Graduation Cap.svg" class="w-10" alt="">
+                </a>
+                <a href="assignments.html" class="relative inline-flex items-center justify-center">
+                    <img src="/public/icons/Backpack.svg" class="w-10" alt="">
+                </a>
+                <a href="" class="relative inline-flex items-center justify-center">
+                </a>
+                
+                
+                <a href="" class="relative inline-flex items-center justify-center">
+                    <img src="/public/icons/Shutdown.svg" class="w-10 mb-3" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="main-area mt-7 w-10/12 mr-4 pb-10">
+            <div class="welcome-text main flex justify-between">
+                <h1 class="text-2xl font-semibold">My Course</h1>
+                <div class="text-right flex">
+                    <h1 class="text-base opacity-70 font-medium self-center">Senin, 15 Desember 2023</h1>
+                    <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900" name="chevron-back-outline"></ion-icon>
+                    <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900" name="chevron-forward-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="course-banner w-full mt-7 mb-3">
+                <div class="card h-56 rounded-2xl py-1 bg-amber-300 ">
+                    <h3 class="ml-5 mt-3 text-3xl font-bold">UI/UX Design</h3>
+                    <p class="ml-5 mt-1 text-base  font-normal">Telkom DigiUp 2023</p>
+                </div>
+            </div>
+
+            <div class="course-attributes flex flex-row flex-wrap">
+                <div class="attribute flex px-9 mt-3 py-1.5 bg-gray-200 hover:bg-gray-300 rounded-full" onclick="location.href='materials.html'">
+                    <i class="fa-solid fa-book text-xl text-violet-500 self-center"></i>
+                    <h1 class="text-xl font-medium self-center ml-3 cursor-pointer">Materials</h1>
+                </div>
+                <div class="attribute ml-3 flex px-9 mt-3 py-1.5 bg-gray-200 hover:bg-gray-300 rounded-full" onclick="location.href='assignments.html'">
+                    <i class="fa-solid fa-book-open text-xl text-violet-500 self-center"></i>
+                    <h1 class="text-xl font-medium self-center ml-3 cursor-pointer">Assignments</h1>
+                </div>
+                <div class="attribute ml-3 flex px-9 mt-3 py-1.5 bg-gray-200 hover:bg-gray-300 rounded-full" onclick="location.href='members.html'">
+                    <i class="fa-solid fa-users text-xl text-violet-500 self-center"></i>
+                    <h1 class="text-xl font-medium self-center ml-3 cursor-pointer">Members</h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/1319cd5cd7.js" crossorigin="anonymous"></script>
+</body>
+</html>
