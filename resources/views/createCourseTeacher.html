@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 </head>
 <body class="bg-gray-100">
 
@@ -15,13 +17,13 @@
                         <img src="https://i.pinimg.com/564x/03/39/27/033927806d11bab51c919cd265b6960b.jpg" alt="">
                     </div>
                 </a>
-                <a href="layout.html" class="relative inline-flex items-center justify-center">
+                <a href="homeTeacher.html" class="relative inline-flex items-center justify-center">
                     <img src="/public/icons/Home.svg" class="w-10" alt="">
                 </a>
-                <a href="courses.html" class="relative inline-flex items-center justify-center">
+                <a href="coursesTeacher.html" class="relative inline-flex items-center justify-center">
                     <img src="/public/icons/Graduation Cap.svg" class="w-10" alt="">
                 </a>
-                <a href="assignments.html" class="relative inline-flex items-center justify-center">
+                <a href="assignmentsTeacher.html" class="relative inline-flex items-center justify-center">
                     <img src="/public/icons/Backpack.svg" class="w-10" alt="">
                 </a>
                 <a href="" class="relative inline-flex items-center justify-center">
@@ -35,7 +37,7 @@
         </div>
         <div class="main-area mt-7 w-10/12 mr-4 pb-10">
             <div class="welcome-text main flex justify-between">
-                <h1 class="text-2xl font-semibold">My Course</h1>
+                <h1 class="text-2xl font-bold">Create a Course</span></h1>
                 <div class="text-right flex">
                     <h1 class="text-base opacity-70 font-medium self-center">Senin, 15 Desember 2023</h1>
                     <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900" name="chevron-back-outline"></ion-icon>
@@ -43,36 +45,26 @@
                 </div>
             </div>
 
-            <div class="course-banner w-full mt-7 mb-3">
-                <div class="card h-56 rounded-2xl py-1 bg-amber-300 ">
-                    <h3 class="ml-5 mt-3 text-3xl font-bold">UI/UX Design</h3>
-                    <p class="ml-5 mt-1 text-base  font-normal">Telkom DigiUp 2023</p>
+        <div class="form-area mt-8 w-6/12">
+            <form action="" method="post">
+                <div class="input name mt-6">
+                    <label for="name" class="block mb-2 text-base font-medium text-gray-900">Course Name</label>
+                    <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-base font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-3" placeholder="Content Creator Class" required>
                 </div>
-            </div>
-
-            <div class="course-attributes flex flex-row flex-wrap">
-                <div class="attribute flex px-9 mt-3 py-1.5 bg-gray-200 hover:bg-gray-300 rounded-full" onclick="location.href='materials.html'">
-                    <i class="fa-solid fa-book text-xl text-violet-500 self-center"></i>
-                    <h1 class="text-xl font-medium self-center ml-3 cursor-pointer">Materials</h1>
-                </div>
-                <div class="attribute ml-3 flex px-9 mt-3 py-1.5 bg-gray-200 hover:bg-gray-300 rounded-full" onclick="location.href='assignments.html'">
-                    <i class="fa-solid fa-book-open text-xl text-violet-500 self-center"></i>
-                    <h1 class="text-xl font-medium self-center ml-3 cursor-pointer">Assignments</h1>
-                </div>
-                <div class="attribute ml-3 flex px-9 mt-3 py-1.5 bg-gray-200 hover:bg-gray-300 rounded-full" onclick="location.href='members.html'">
-                    <i class="fa-solid fa-users text-xl text-violet-500 self-center"></i>
-                    <h1 class="text-xl font-medium self-center ml-3 cursor-pointer">Members</h1>
+                <div class="input description mt-6">
+                    <label for="description" class="block mb-2 text-base font-medium text-gray-900">Assignment description</label>
+                    <input id="description" type="hidden" name="description">
+                    <trix-editor input="description" class="h-56"></trix-editor>
                 </div>
 
-            </div>
 
-            <div class="course-description mt-10">
-                <h1 class="title font-semibold text-base">
-                    Course Description :
-                </h1>
+                <button type="submit" class="py-2 w-full px-3 bg-violet-500 hover:bg-violet-700 text-white font-semibold text-base mt-5 mb-5 rounded-full" onclick="location.href='assignmentsTeacher.html'">
+                        Create Now
+                </button>
+            </form>
+        </div>
 
-                <p class="mt-1 font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ex iure obcaecati? Cumque nesciunt perspiciatis dolores? Alias ab itaque unde. Lorem ipsum dolor sit amet consectetur adipisicing elit. A, deserunt eveniet ipsam ex numquam consequatur consequuntur reprehenderit est aut repellat corrupti explicabo, vel quisquam aperiam eum? Expedita cumque praesentium consectetur?</p>
-            </div>
+
         </div>
     </div>
 
