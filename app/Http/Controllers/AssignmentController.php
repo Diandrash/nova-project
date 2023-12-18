@@ -40,7 +40,7 @@ class AssignmentController extends Controller
         $user = User::find($userId);
         $assignments = $user->assignments;
 
-        return view('pages.student.assignment.index_all', [
+        return view('pages.student.assignment.assignments', [
             'assignments' => $assignments
         ]);
     }

@@ -14,6 +14,9 @@
     @if (session()->has('student'))
      <div class="alert alert-success">Selamat datang Student</div>
     @endif
+    @if (session()->has('teacher'))
+     <div class="alert alert-success">Selamat datang Teacher</div>
+    @endif
     
     @yield('container')       
 

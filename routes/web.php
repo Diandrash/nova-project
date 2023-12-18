@@ -48,6 +48,11 @@ Route::get('/student', function () {
     return view('pages.student.index');
 });
 
+Route::get('/student/courses/inputCode', function () {
+    return 2;
+});
+
+
 // Route::get('/home', function(){
 //     return view('home');
 // })->middleware(['auth', 'role_id:1']);
@@ -58,7 +63,10 @@ Route::get('/home', function(){
 
 Route::get('/student/courses', [CourseController::class, 'studentIndex']);
 Route::get('/student/courses/{course}', [CourseController::class, 'studentShow']);
-Route::post('/student/get_course', [EnrollmentController::class, 'getCourse']);
+Route::get('/student/courses/inputCode', [EnrollmentController::class, 'index'])->name('courses.join');
+Route::post('/student/courses/inputCode', [EnrollmentController::class, 'getCourse'])->name('courses.getCourse');
+Route::post('/student/courses/join', [EnrollmentController::class, 'store'])->name('courses.joinCourse');
+// Route::post('/student/get_course', [EnrollmentController::class, 'getCourse']);
 
 Route::get('/student/assignments', [AssignmentController::class,'indexAssignmentStudent']);
 Route::get('/student/assignments/{course_id}/showAssignments', [CourseController::class, 'indexStudent'])->name('assignment.indexStudent');
@@ -87,8 +95,11 @@ Route::get('/teacher/create_course', function(){
     return view('pages.teacher.create_course');
 });
 
-Route::resource('/enrollment', EnrollmentController::class);
+// Route::resource('/enrollment', EnrollmentController::class);
 // Route::resource('/teacher/materials', MaterialController::class);
+
+Route::get('/student/materials', [MaterialController::class, 'indexStudent'])->name('materials.indexStudent');
+
 
 Route::get('/teacher/materials', [MaterialController::class, 'index'])->name('materials.index');
 Route::get('/teacher/materials/create', [MaterialController::class, 'create'])->name('');

@@ -21,6 +21,15 @@ class MaterialController extends Controller
             "materials" => $materials
         ]);
     }
+     public function indexStudent(Request $request)
+    {   
+        $courseId = $request->input('courseId');
+        $materials = Material::where('course_id', $courseId)->get();
+
+        return view('pages.student.material.materials', [
+            "materials" => $materials
+        ]);
+    }
 
     public function create()
     {

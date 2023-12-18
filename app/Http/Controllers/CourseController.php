@@ -20,7 +20,7 @@ class CourseController extends Controller
         $userId = auth()->user()->id;
         $user = User::find($userId);
         $courseInUser = $user->courses->all();
-        return view('pages.student.courses', [
+        return view('pages.student.course.courses', [
             "courses" => $courseInUser
         ]);
     }
@@ -93,7 +93,7 @@ class CourseController extends Controller
      */
     public function studentShow(Course $course)
     {
-        return view('pages.student.show_course', [
+        return view('pages.student.course.index', [
             "course" => $course
         ]);
     }
@@ -118,6 +118,7 @@ class CourseController extends Controller
         ]);
     }
 
+    // PROGRAM ASSIGNMENTS DIPINDAH DISINI
     public function indexStudent(Request $request)
 {
     $course_id = $request->input('courseId');
