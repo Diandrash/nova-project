@@ -49,7 +49,7 @@ class EnrollmentController extends Controller
             // Jika belum terdaftar, buat pendaftaran baru
             Enrollment::create($validatedData);
             Alert::success('Success!', 'Join Course Successfull');
-            return redirect()->intended('/student/courses');
+            return redirect()->intended('/student/courses')->with('clearHistory', true);
         } else {
             // Jika sudah terdaftar, kembalikan pesan kesalahan
             Alert::warning('Already Joined!', 'You Has Already Joined this Course');
@@ -85,9 +85,28 @@ class EnrollmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Enrollment $enrollment)
+    public function destroy(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            "course_id" => 'required',
+            "user_id" => 'required'
+        ]);
+
+        $courseId = $validatedData['course_id'];
+        $userId = $validatedData['user_id'];
+        $enrollment = Enrollment::where('course_id', $courseId)->where('user_id', $userId)->first();
+        // dd($enrollment);
+        try {
+            // Hapus enrollment
+            $enrollment->delete();
+    
+            // Redirect dengan pesan sukses jika diperlukan
+            Alert::success('Success!', 'Leave Course Success');
+            return redirect()->intended('/student/courses');
+        } catch (\Exception $e) {
+            // Redirect dengan pesan error jika terjadi kesalahan
+            return redirect()->intended('/student/courses')->with('error', 'Error deleting enrollment: ' . $e->getMessage());
+        }
     }
 
     public function getCourse(Request $request) {
@@ -112,7 +131,6 @@ class EnrollmentController extends Controller
         }
 
         // Jika ada data course yang cocok, tampilkan tampilan hasil
-        Alert::success('Success!', 'Course Founded');
         return view('pages.student.course.result', [
             "courses" => $courses
         ]);

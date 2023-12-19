@@ -117,6 +117,19 @@ class CourseController extends Controller
             "users" => $userInCourse
         ]);
     }
+    public function studentShowUser(Request $request, Course $course)
+    {
+        // return $request;
+        $courseId = $request->input('courseId');
+        $course = Course::find($courseId);
+        $userInCourse = $course->users->all();
+        
+
+        return view('pages.student.course.members', [
+            "users" => $userInCourse,
+            "course" => $course
+        ]);
+    }
 
     // PROGRAM ASSIGNMENTS DIPINDAH DISINI
     public function indexStudent(Request $request)
@@ -129,7 +142,7 @@ class CourseController extends Controller
     // Ambil semua assignments yang dimiliki oleh pengguna untuk course tertentu
     $assignments = $user->assignments()->where('course_id', $course_id)->get();
 
-    return view('pages.student.assignment.index', [
+    return view('pages.student.assignment.assignments', [
         "assignments" => $assignments,
         "course_id" => $course_id
     ]);

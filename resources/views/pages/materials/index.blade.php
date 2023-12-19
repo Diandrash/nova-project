@@ -27,7 +27,7 @@
                             <td class="text-capitalized fs-6">
                                 <a href="{{ asset('materials/' . $material->file_path) }}" style="text-decoration: none;" target="_blank">{{ $material->title }}</a>
                             </td>
-                            <td>
+                            <td >
                                 {{ $material->file_path }}
                             </td>
                             <td>

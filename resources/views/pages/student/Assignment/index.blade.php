@@ -1,44 +1,62 @@
-@extends('layout.index')
+@extends('layout.student')
 
 @section('container')
-@if (session()->has('AddSuccess'))
-    <div class="alert alert-success">
-        {{ session('AddSuccess') }}
+<div class="welcome-text main flex justify-between">
+    <h1 class="text-2xl font-semibold">Assignment Details</h1>
+    <div class="text-right flex">
+        <h1 class="text-base opacity-70 font-medium self-center">Senin, 15 Desember 2023</h1>
+        <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900" name="chevron-back-outline"></ion-icon>
+        <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900" name="chevron-forward-outline"></ion-icon>
     </div>
-@endif
-    <div class="container mt-2">
-        <div class="row d-flex">
-            <div class="d-flex text-primary col" onclick="history.back()">
-                <ion-icon class="align-self-center" name="chevron-back-outline"></ion-icon>
-                <h6 style="cursor: pointer" class="align-self-center mb-0 ms-1">Back</h6>
+</div>
+
+<div class="assignment-title w-full mt-7 mb-3">
+    <div class="text-top flex flex-wrap justify-between ">
+        <h1 class="font-bold text-3xl">{{ $assignment->title }}</h1>
+        <div class="due-on flex">
+            <i class="fa-solid fa-bell text-sm text-blue-600 self-center"></i>
+            @php
+                $deadline = \Carbon\Carbon::parse($assignment->deadline);
+                $formattedDeadline = $deadline->format('j F Y | H:i T');
+            @endphp
+            <h2 class="font-medium text-sm text-blue-600 self-center ml-2">Due on {{ $formattedDeadline }}</h2>
+        </div>
+    </div>
+    <h3 class="font-semibold text-medium mt-2 opacity-70">{{ $assignment->course->name }}</h3>
+</div>
+
+<div class="assignment-instruction mt-7 w-10/12">
+    <h1 class="text-sm opacity-70 mt-3">Instructions :</h1>
+    <p>{{ $assignment->description }}</p>
+</div>
+
+<div class="assignment-attachment mt-10">
+    <h1 class="text-sm opacity-70 mt-3">Attachment :</h1>
+
+
+    <div class="flex justify-between mt-2 px-5 py-3 w-6/12 bg-gray-200 hover:bg-blue-400 cursor-pointer">
+        <div class="attachment-item "  onclick="window.open('{{ asset('assignments/' . $assignment->files) }}', '_blank');">
+            <div class="text-left self-center flex">
+                <i class="fa-solid fa-paperclip  text-base self-center"></i>
+                <h2 class="text-base font-semibold ml-3">{{ $assignment->files }}</h2>
             </div>
-
-            
         </div>
-        <h1 class="mt-2">My Assignments</h1>
-        @php
-            $courseId = request('courseId');
-            $course = App\Models\Course::find($courseId)
-        @endphp
+        <a class="text-right self-center" href="{{ asset('assignments/' . $assignment->files) }}" download>
+            <i class="fa-solid fa-download text-gray-800 hover:text-white cursor-pointer"></i>
+        </a>
+        
+    </div>
 
-        <h6 class="text-primary mt-3">{{ $course->name }} Course</h6>
-        <div class="row mt-3  ">
-            @foreach ($assignments as $assignment)
-                
-                <div class="col-sm-4 mb-3 mb-sm-4">
-                    <div class="card" onclick="location.href='{{ route('assignment.studentShow', ['course_id' => $courseId, 'assignment' => $assignment->id]) }}'">
-                        <img  src="https://images.unsplash.com/photo-1516383607781-913a19294fd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ $assignment->title }}</h4>
-                            <a href="{{ route('assignment.studentShow', ['course_id' => $courseId, 'assignment' => $assignment->id]) }}" class="btn btn-primary mt-4">Show Assignment</a>
-                            
-                            <p class="mt-1">Due on {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $assignment->deadline)->format('d F Y H:i') }}</p>
-                        </div>
-                    </div>
-                </div>
+    <div class="attachment-work mt-10">
+        <h1 class="text-sm opacity-70 mt-3">My Work :</h1>
+        
+        <form action="post">
+            <input class="mt-3 w-6/12 border" type="file" name="" id=""> <br>
+            <button class="py-1 w-6/12 mt-5 rounded-2xl text-base font-semibold text-white bg-violet-500 hover:bg-violet-200">
+                Submit
+            </button>
+        </form>
 
-            @endforeach 
-
-        </div>
-
+    </div>
+</div>
 @endsection

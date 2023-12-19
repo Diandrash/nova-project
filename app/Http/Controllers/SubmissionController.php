@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Submission;
 use App\Models\Assignment;
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubmissionRequest;
 use App\Http\Requests\UpdateSubmissionRequest;
 
@@ -21,6 +23,7 @@ class SubmissionController extends Controller
         return view('pages.teacher.submissions.index', 
         ["submissions" => $submissions]);
     }
+
 
     /**
      * Show the form for creating a new resource.

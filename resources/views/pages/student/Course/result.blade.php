@@ -30,7 +30,7 @@
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <input type="hidden" name="course_id" value="{{ $course->id }}">
 
-                    <button  type="submit" class=" mt-72 ml-5 py-3 px-16 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white opacity-80 rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700">Join Course</button>
+                    <button  type="submit" class=" mt-72 ml-5 py-3 px-16 me-2 mb-2 text-sm font-black text-black focus:outline-none bg-white opacity-80 rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 :focus:ring-gray-700 :bg-gray-800 :text-gray-400 :border-gray-600 :hover:text-white :hover:bg-gray-700">Join Course</button>
                 </form>
             </div>
         @endforeach

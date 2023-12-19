@@ -19,7 +19,7 @@
                 <th scope="col" class="px-3 py-3 text-left">
                     Assignment name
                 </th>
-                <th scope="col" class=" py-3 text-left">
+                <th scope="col" class=" py-3 text-center">
                     Due on
                 </th>
                 <th scope="col" class="px-6 py-3 text-center">
@@ -29,213 +29,55 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
+            @forelse ($assignments as $index => $assignment)
+            @php
+                $icons = ['pen-ruler', 'palette', 'paintbrush', 'scroll'];
+                $colors = ['amber-700', 'violet-500', 'amber-500', 'violet-700'];
+                $randomIcon = $icons[array_rand($icons)];
+                $randomColor = $colors[array_rand($colors)];
+            @endphp
+            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='{{ route('assignment.studentShow', ['assignment' => $assignment->id]) }}'">
                 <td class="px-2 py-4">
-                    1
+                   {{ $loop->iteration }}
                 </td>
                 <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                     <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Book.svg" alt="icon" class="w-6 bg-gray-10 ">
+                        <div class="icon px-4 py-3 rounded-full bg-gray-200">
+                            <i class="fa-solid fa-{{ $randomIcon }} text-{{ $randomColor }}"></i>
                         </div>
                         <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Tugas 1. Struktur Website</h5>
-                            <p class="text-left opacity-60 font-normal">Telkom DigiUp 2023</p>
+                            <h5 class="text-left text-base font-semibold">{{ $assignment->title }}</h5>
+                            <p class="text-left opacity-60 font-normal">{{ $assignment->course->name }}</p>
                         </div>
                     </div>
                 </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">Today, 23:59 WIB</h3>
+                <td class="text-center py-4">
+                    @php
+                        $deadline = \Carbon\Carbon::parse($assignment->deadline);
+                        $formattedDeadline = $deadline->format('j F Y | H:i T');
+                    @endphp
+                
+                    <h3 class="text-black font-bold">{{ $formattedDeadline }}</h3>
                 </td>
                 <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-7 me-2 mb-2 text-green-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-green-200 hover:bg-green-100 hover:text-blue-1 focus:z-10 focus:ring-4 focus:ring-green-200 :focus:ring-green-1 :bg-green-800 :text-green-400 :border-green-600 :hover:text-white :hover:bg-green-700">Completed</button>
+                    @if($assignment->pivot->status == 1)
+                        <button type="button" class="py-2 px-7 me-2 mb-2 text-green-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-green-200 hover:bg-green-100 hover:text-blue-1 focus:z-10 focus:ring-4 focus:ring-green-200 :focus:ring-green-1 :bg-green-800 :text-green-400 :border-green-600 :hover:text-white :hover:bg-green-700">Completed</button>
+                    @else
+                        <button type="button" class="py-2 px-5 me-2 mb-2 text-red-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-red-200 hover:bg-red-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-red-200 :focus:ring-red-700 :bg-red-800 :text-red-400 :border-red-600 :hover:text-white :hover:bg-red-700">Uncompleted</button>
+                    @endif
                 </td>
+                
 
             </tr>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
-                <td class="px-2 py-4">
-                    2
-                </td>
-                <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                    <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Paint.svg" alt="icon" class="w-6 bg-gray-10 ">
-                        </div>
-                        <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Tugas 2. Layout Website</h5>
-                            <p class="text-left opacity-60 font-normal">Telkom DigiUp 2023</p>
-                        </div>
-                    </div>
-                </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">Tomorrow, 23:59 WIB</h3>
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-5 me-2 mb-2 text-red-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-red-200 hover:bg-red-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-red-200 :focus:ring-red-700 :bg-red-800 :text-red-400 :border-red-600 :hover:text-white :hover:bg-red-700">Uncompleted</button>
-                </td>
-
+            
+            @empty
+            <!-- Pesan jika materials kosong -->
+            <tr>
+                <td colspan="5" class="text-center py-4 text-gray-500 font-semibold text-base">No Assignments available.</td>
             </tr>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
-                <td class="px-2 py-4">
-                    3
-                </td>
-                <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                    <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Ruler.svg" alt="icon" class="w-6 bg-gray-10 ">
-                        </div>
-                        <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Project Akhir SaaS</h5>
-                            <p class="text-left opacity-60 font-normal">Ms. Atik Ariyani</p>
-                        </div>
-                    </div>
-                </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">13 Dec 2023 | 23:59 WIB</h3>
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-5 me-2 mb-2 text-red-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-red-200 hover:bg-red-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-red-200 :focus:ring-red-700 :bg-red-800 :text-red-400 :border-red-600 :hover:text-white :hover:bg-red-700">Uncompleted</button>
-                </td>
+            @endforelse
 
-            </tr>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
-                <td class="px-2 py-4">
-                    1
-                </td>
-                <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                    <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Book.svg" alt="icon" class="w-6 bg-gray-10 ">
-                        </div>
-                        <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Tugas 1. Struktur Website</h5>
-                            <p class="text-left opacity-60 font-normal">Telkom DigiUp 2023</p>
-                        </div>
-                    </div>
-                </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">Today, 23:59 WIB</h3>
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-7 me-2 mb-2 text-green-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-green-200 hover:bg-green-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-green-200 :focus:ring-green-700 :bg-green-800 :text-green-400 :border-green-600 :hover:text-white :hover:bg-green-700">Completed</button>
-                </td>
 
-            </tr>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
-                <td class="px-2 py-4">
-                    2
-                </td>
-                <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                    <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Paint.svg" alt="icon" class="w-6 bg-gray-10 ">
-                        </div>
-                        <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Tugas 2. Layout Website</h5>
-                            <p class="text-left opacity-60 font-normal">Telkom DigiUp 2023</p>
-                        </div>
-                    </div>
-                </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">Tomorrow, 23:59 WIB</h3>
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-5 me-2 mb-2 text-red-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-red-200 hover:bg-red-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-red-200 :focus:ring-red-700 :bg-red-800 :text-red-400 :border-red-600 :hover:text-white :hover:bg-red-700">Uncompleted</button>
-                </td>
-
-            </tr>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
-                <td class="px-2 py-4">
-                    3
-                </td>
-                <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                    <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Ruler.svg" alt="icon" class="w-6 bg-gray-10 ">
-                        </div>
-                        <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Project Akhir SaaS</h5>
-                            <p class="text-left opacity-60 font-normal">Ms. Atik Ariyani</p>
-                        </div>
-                    </div>
-                </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">13 Dec 2023 | 23:59 WIB</h3>
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-5 me-2 mb-2 text-red-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-red-200 hover:bg-red-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-red-200 :focus:ring-red-700 :bg-red-800 :text-red-400 :border-red-600 :hover:text-white :hover:bg-red-700">Uncompleted</button>
-                </td>
-
-            </tr>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
-                <td class="px-2 py-4">
-                    1
-                </td>
-                <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                    <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Book.svg" alt="icon" class="w-6 bg-gray-10 ">
-                        </div>
-                        <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Tugas 1. Struktur Website</h5>
-                            <p class="text-left opacity-60 font-normal">Telkom DigiUp 2023</p>
-                        </div>
-                    </div>
-                </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">Today, 23:59 WIB</h3>
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-7 me-2 mb-2 text-green-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-green-200 hover:bg-green-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-green-200 :focus:ring-green-700 :bg-green-800 :text-green-400 :border-green-600 :hover:text-white :hover:bg-green-700">Completed</button>
-                </td>
-
-            </tr>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
-                <td class="px-2 py-4">
-                    2
-                </td>
-                <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                    <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Paint.svg" alt="icon" class="w-6 bg-gray-10 ">
-                        </div>
-                        <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Tugas 2. Layout Website</h5>
-                            <p class="text-left opacity-60 font-normal">Telkom DigiUp 2023</p>
-                        </div>
-                    </div>
-                </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">Tomorrow, 23:59 WIB</h3>
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-5 me-2 mb-2 text-red-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-red-200 hover:bg-red-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-red-200 :focus:ring-red-700 :bg-red-800 :text-red-400 :border-red-600 :hover:text-white :hover:bg-red-700">Uncompleted</button>
-                </td>
-
-            </tr>
-            <tr class="bg-gray-100 border-b hover:bg-violet-100 :border-gray-700 cursor-pointer" onclick="location.href='assignment.html'">
-                <td class="px-2 py-4">
-                    3
-                </td>
-                <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                    <div class="flex">
-                        <div class="icon p-3 rounded-full bg-gray-100">
-                            <img src="/icons/Ruler.svg" alt="icon" class="w-6 bg-gray-10 ">
-                        </div>
-                        <div class="text ml-3">
-                            <h5 class="text-left text-base font-semibold">Project Akhir SaaS</h5>
-                            <p class="text-left opacity-60 font-normal">Ms. Atik Ariyani</p>
-                        </div>
-                    </div>
-                </th>
-                <td class="text-left py-4">
-                    <h3 class="text-black font-bold">13 Dec 2023 | 23:59 WIB</h3>
-                </td>
-                <td class="px-6 py-4 text-center">
-                    <button type="button" class="py-2 px-5 me-2 mb-2 text-red-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-red-200 hover:bg-red-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-red-200 :focus:ring-red-700 :bg-red-800 :text-red-400 :border-red-600 :hover:text-white :hover:bg-red-700">Uncompleted</button>
-                </td>
-
-            </tr>
 
         </tbody>
     </table>

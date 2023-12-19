@@ -47,7 +47,7 @@
         </div>
 
 
-        <button class="py-2 mt-9 rounded-2xl bg-violet-600 text-white font-semibold text-xl" type="submit" onclick="location.href='result.join.html'">Submit</button>
+        <button class="py-2 mt-9 rounded-2xl bg-violet-600 text-white font-semibold text-xl" type="submit" >Submit</button>
     </form>
 
 </div>

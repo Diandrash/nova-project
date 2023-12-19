@@ -66,11 +66,13 @@ Route::get('/student/courses/{course}', [CourseController::class, 'studentShow']
 Route::get('/student/courses/inputCode', [EnrollmentController::class, 'index'])->name('courses.join');
 Route::post('/student/courses/inputCode', [EnrollmentController::class, 'getCourse'])->name('courses.getCourse');
 Route::post('/student/courses/join', [EnrollmentController::class, 'store'])->name('courses.joinCourse');
+Route::get('/student/courses/{course}/users', [CourseController::class, 'studentShowUser'])->name('studentShowUsers');
+Route::post('/student/courses/{course}/leave', [EnrollmentController::class, 'destroy'])->name('courses.leave');
 // Route::post('/student/get_course', [EnrollmentController::class, 'getCourse']);
 
 Route::get('/student/assignments', [AssignmentController::class,'indexAssignmentStudent']);
 Route::get('/student/assignments/{course_id}/showAssignments', [CourseController::class, 'indexStudent'])->name('assignment.indexStudent');
-Route::get('/student/assignments/{course_id}/showAssignments/{assignment}', [AssignmentController::class, 'studentShow'])->name('assignment.studentShow');
+Route::get('/student/assignments/showAssignments/{assignment}', [AssignmentController::class, 'studentShow'])->name('assignment.studentShow');
 Route::put('/student/assignments/{course_id}/showAssignments/{assignment}/{submission}', [SubmissionController::class, 'studentUpdate'])->name('assignment.studentUpdate');
 
 

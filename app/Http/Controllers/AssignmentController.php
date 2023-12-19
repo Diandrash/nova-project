@@ -25,7 +25,7 @@ class AssignmentController extends Controller
     $userId = auth()->user()->id;
     $user = User::find($userId);
 
-    // Ambil semua assignments yang dimiliki oleh pengguna untuk course tertentu
+    // Ambil semua assignments yang dimiliki oleh pengguna pada course tertentu
     $assignments = $user->assignments()->where('course_id', $course_id)->get();
 
     return view('pages.student.assignment.index', [
@@ -34,7 +34,7 @@ class AssignmentController extends Controller
     ]);
 }
 
-
+// Menampilkan Semua Assignment yang dimiliki oleh satu user
     public function indexAssignmentStudent(){
         $userId = auth()->user()->id;
         $user = User::find($userId);
@@ -127,7 +127,7 @@ class AssignmentController extends Controller
         ]);
     }
 
-    public function studentShow($course_id, $assignment)
+    public function studentShow($assignment)
     {
         // dd($assignment);
         $assignmentId = $assignment;
@@ -135,10 +135,9 @@ class AssignmentController extends Controller
 
         $userId = auth()->user()->id;
         $submission = Submission::where('user_id', $userId)->where('assignment_id', $assignmentId)->get();
-        return view('pages.student.assignment.show', [
+        return view('pages.student.assignment.index', [
             "assignment" => $assignment,
-            "submission" => $submission  ,
-            "course"     => $course_id
+            "submission" => $submission  
         ]);
     }
     /**

@@ -49,7 +49,7 @@
             $submissionId = $submission[0]->id
         @endphp
         <h5 class="mt-3">Your Work</h5>
-        @if ($submission[0]->submitted_files)
+        @if ($submission[0]->submitted_files)  
         <div class="d-flex">
             <div class="col-4">
                 <div class="d-flex rounded" style="background-color: rgb(202, 202, 202)">
