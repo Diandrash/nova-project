@@ -4,17 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Nova Project | Student Page</title>
+        <title>Nova Project | Teacher Page</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        {{-- <link rel="stylesheet" href="/css/main.css"> --}}
-        {{-- <link rel="stylesheet" href="/css/animate.css"> --}}
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+        <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
         <link rel="stylesheet" href="{{ asset('css/viewer.css') }}">
     </head>
     <body class="bg-gray-100">
         @include('sweetalert::alert')
         <div class="flex flex-row">
             <div class="sidebar-area w-2/12 flex justify-center ">
-                @include('layout.sidebarStudent')
+                @include('layout.sidebarTeacher')
             </div>
             <div class="main-area mt-7 w-10/12 mr-4 pb-10">
                 @yield('container')

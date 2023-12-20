@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Assignment;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
@@ -35,13 +37,27 @@ class CourseController extends Controller
             "assignments" => $assignments
         ]);
     }
+    public function homeTeacherIndex()
+    {
+        $userId = auth()->user()->id;
+        $instructorId = $userId;
+        $assignmentModel = new Assignment;
+        // Panggil method assignmentsByInstructor pada instance Assignment
+        $courseInTeacher = Course::where('instructor_id', $userId)->take(4)->get();
+        $assignmentsByInstructor = $assignmentModel->assignmentsByInstructor($instructorId)->take(4);
+        // dd($courseInTeacher);
+        return view('pages.teacher.index', [
+            "courses" => $courseInTeacher,
+            "assignments" => $assignmentsByInstructor,
+        ]);
+    }
 
     public function teacherIndex()
     {
         $instructorId = auth()->user()->id;
         $courses = Course::where('instructor_id', $instructorId)->get();
 
-        return view('pages.teacher.my_courses', [
+        return view('pages.teacher.course.courses', [
             "courses" => $courses
         ]);
     }
@@ -50,10 +66,9 @@ class CourseController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function createCourse()
+    public function create()
     {
-        return 111;
-        // return view('pages.teacher.create_course');
+        return view('pages.teacher.course.create');
         // return view('layout.index');
     }
 
@@ -62,7 +77,7 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        // return @dd($request);
+        // return $request;
         function generateCourseCode() {
             $number = mt_rand(100000, 999999); // better than rand()
         
@@ -82,7 +97,6 @@ class CourseController extends Controller
         }
 
         $course_code = generateCourseCode();
-    
         $credentials = $request->validate([
             'name' => 'required|min:5|max:255',
             'description' => 'required|max:1000',
@@ -96,7 +110,8 @@ class CourseController extends Controller
 
         Course::create($validatedData);
 
-        return redirect('/teacher/courses/my_courses')->with('successCreate', 'success');
+        Alert::success('Success', 'Create Course Successfully');
+        return redirect('/teacher/courses');
     }
 
     /**
@@ -111,7 +126,7 @@ class CourseController extends Controller
     public function teacherShow(Course $course)
     {
         // dd($course);
-        return view('pages.teacher.show_course', [
+        return view('pages.teacher.course.index', [
             "course" => $course
         ]);
     }
@@ -164,7 +179,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('pages.teacher.edit_course', [
+        return view('pages.teacher.course.edit', [
             "course" => $course
         ]);
     }
@@ -186,7 +201,8 @@ class CourseController extends Controller
 
         Course::where('id', $course->id)->update($ValidatedData);
 
-        return redirect('/teacher/courses/my_courses')->with('successUpdate', 'success');
+        Alert::success('Success', 'Course Has Been Updated');
+        return redirect()->route('course.showStudent', ['course' => $course->id]);
     }
 
     /**

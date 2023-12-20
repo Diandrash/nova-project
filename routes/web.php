@@ -39,11 +39,6 @@ Route::get('/login', function () {
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/login', [LoginController::class, 'auth']);
 
-	
-Route::get('/teacher', function () {
-    return view('pages.teacher.index');
-});
-
 
 Route::get('/student/courses/inputCode', function () {
     return 2;
@@ -74,11 +69,16 @@ Route::get('/student/assignments/showAssignments/{assignment}', [AssignmentContr
 Route::put('/student/assignments/showAssignments/{assignment}/{submission}', [SubmissionController::class, 'studentUpdate'])->name('assignment.studentUpdate');
 
 
-Route::get('/teacher/courses/my_courses', [CourseController::class, 'teacherIndex']);
-Route::get('/teacher/courses/{course}', [CourseController::class, 'teacherShow']);
-Route::post('/teacher/courses', [CourseController::class, 'store']);
+
+
+
+Route::get('/teacher', [CourseController::class, 'homeTeacherIndex']);
+Route::get('/teacher/courses', [CourseController::class, 'teacherIndex']);
+Route::get('/teacher/courses/create', [CourseController::class, 'create']);
+Route::post('/teacher/courses/create', [CourseController::class, 'store']);
+Route::get('/teacher/courses/{course}', [CourseController::class, 'teacherShow'])->name('course.showStudent');
 Route::get('/teacher/courses/{course}/edit', [CourseController::class, 'edit']);
-Route::put('/teacher/courses/{course}', [CourseController::class, 'update']);
+Route::put('/teacher/courses/{course}/edit', [CourseController::class, 'update']);
 Route::delete('/teacher/courses/{course}', [CourseController::class, 'destroy']);
 Route::get('/course/show-users/{course_id}', [CourseController::class, 'showUser'])->name('course.show-users');
 
@@ -91,9 +91,7 @@ Route::delete('/teacher/assignments/{assignment}', [AssignmentController::class,
 
 
 
-Route::get('/teacher/create_course', function(){
-    return view('pages.teacher.create_course');
-});
+
 
 // Route::resource('/enrollment', EnrollmentController::class);
 // Route::resource('/teacher/materials', MaterialController::class);

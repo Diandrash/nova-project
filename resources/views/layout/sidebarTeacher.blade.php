@@ -4,13 +4,13 @@
             <img src="https://i.pinimg.com/564x/03/39/27/033927806d11bab51c919cd265b6960b.jpg" alt="">
         </div>
     </a>
-    <a href="/student" class="relative inline-flex items-center justify-center">
+    <a href="/teacher" class="relative inline-flex items-center justify-center">
         <img src="/icons/Home.svg" class="w-10" alt="">
     </a>
-    <a href="/student/courses" class="relative inline-flex items-center justify-center">
+    <a href="/teacher/courses" class="relative inline-flex items-center justify-center">
         <img src="/icons/Graduation Cap.svg" class="w-10" alt="">
     </a>
-    <a href="/student/assignments" class="relative inline-flex items-center justify-center">
+    <a href="" class="relative inline-flex items-center justify-center">
         <img src="/icons/Backpack.svg" class="w-10" alt="">
     </a>
     <a href="" class="relative inline-flex items-center justify-center">

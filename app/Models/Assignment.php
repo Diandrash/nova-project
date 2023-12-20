@@ -36,4 +36,14 @@ class Assignment extends Model
         return $this->hasMany(Submission::class);
     }
     
+    // Dalam model Assignment.php
+
+    public function assignmentsByInstructor($instructorId)
+    {
+        // Ambil semua assignment yang memiliki course dengan instructor_id yang diinputkan
+        return $this->whereHas('course', function ($query) use ($instructorId) {
+            $query->where('instructor_id', $instructorId);
+        })->get();
+    }
+
 }

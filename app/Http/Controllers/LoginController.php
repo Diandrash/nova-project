@@ -24,7 +24,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if ( Auth::user()->role_id == 1 ) {
-                return redirect()->intended('/student')->with('student', 'student');
+                return redirect()->intended('/student')->with('loginSuccess', 'Login Success');
             } 
 
             if ( Auth::user()->role_id == 2 ) {
