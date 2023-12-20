@@ -44,9 +44,6 @@ Route::get('/teacher', function () {
     return view('pages.teacher.index');
 });
 
-Route::get('/student', function () {
-    return view('pages.student.index');
-});
 
 Route::get('/student/courses/inputCode', function () {
     return 2;
@@ -54,13 +51,14 @@ Route::get('/student/courses/inputCode', function () {
 
 
 // Route::get('/home', function(){
-//     return view('home');
-// })->middleware(['auth', 'role_id:1']);
-
-Route::get('/home', function(){
-    return view('pages.home');
-});
-
+    //     return view('home');
+    // })->middleware(['auth', 'role_id:1']);
+    
+    Route::get('/home', function(){
+        return view('pages.home');
+    });
+    
+Route::get('/student', [CourseController::class, 'homeStudentIndex']);
 Route::get('/student/courses', [CourseController::class, 'studentIndex']);
 Route::get('/student/courses/{course}', [CourseController::class, 'studentShow']);
 Route::get('/student/courses/inputCode', [EnrollmentController::class, 'index'])->name('courses.join');
@@ -73,7 +71,7 @@ Route::post('/student/courses/{course}/leave', [EnrollmentController::class, 'de
 Route::get('/student/assignments', [AssignmentController::class,'indexAssignmentStudent']);
 Route::get('/student/assignments/{course_id}/showAssignments', [CourseController::class, 'indexStudent'])->name('assignment.indexStudent');
 Route::get('/student/assignments/showAssignments/{assignment}', [AssignmentController::class, 'studentShow'])->name('assignment.studentShow');
-Route::put('/student/assignments/{course_id}/showAssignments/{assignment}/{submission}', [SubmissionController::class, 'studentUpdate'])->name('assignment.studentUpdate');
+Route::put('/student/assignments/showAssignments/{assignment}/{submission}', [SubmissionController::class, 'studentUpdate'])->name('assignment.studentUpdate');
 
 
 Route::get('/teacher/courses/my_courses', [CourseController::class, 'teacherIndex']);

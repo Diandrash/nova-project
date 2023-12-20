@@ -134,7 +134,7 @@ class AssignmentController extends Controller
         $assignment = Assignment::find($assignmentId);
 
         $userId = auth()->user()->id;
-        $submission = Submission::where('user_id', $userId)->where('assignment_id', $assignmentId)->get();
+        $submission = Submission::where('user_id', $userId)->where('assignment_id', $assignmentId)->first();
         return view('pages.student.assignment.index', [
             "assignment" => $assignment,
             "submission" => $submission  

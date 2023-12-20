@@ -14,7 +14,7 @@
 
 <div class="input-code-area flex flex-col mt-24 items-center h-screen">
     <h1 class="text-3xl font-semibold">Enter Course Code</h1>
-    <p id="helper-text-explanation" class="mt-2 text-2xl text-gray-500 dark:text-gray-400">Please input the 6 digit code from Instructor of Course </p>
+    <p id="helper-text-explanation" class="mt-2 text-2xl text-gray-500 dark:text-gray-400">Please input 6 digit code from Instructor of Course </p>
     
     <form action="{{ route('courses.getCourse') }}" method="POST" class="mt-7 flex flex-col">
         @csrf

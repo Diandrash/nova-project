@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubmissionRequest;
 use App\Http\Requests\UpdateSubmissionRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SubmissionController extends Controller
 {
@@ -60,14 +61,15 @@ class SubmissionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function studentUpdate(UpdateSubmissionRequest $request, $course_id, $assignment, $submission)
+    public function studentUpdate(UpdateSubmissionRequest $request, $assignment, $submission)
     {
+        // dd($request);
         // Cari submission berdasarkan ID
         $submission = Submission::find($submission);
     
         // Validasi input dari request sesuai kebutuhan
         $validatedData = $request->validate([
-            'submitted_files' => 'file|mimes:pdf,doc,docx,pptx,xls,jpg,jpeg,png',
+            'submitted_files' => 'file|mimes:pdf,doc,docx,pptx,xls,jpg,jpeg,png,heic,csv',
             'submission_text' => 'max:255',
             'status' => 'required|in:0,1', // Pastikan status adalah 0 atau 1
             'user_id' => 'required',
@@ -86,13 +88,14 @@ class SubmissionController extends Controller
         }
     
         // Update atribut-atribut lainnya
-        $submission->submission_text = $validatedData['submission_text'];
+        // $submission->submission_text = $validatedData['submission_text'];
         $submission->status = $validatedData['status'];
     
         // $submission->update($validatedData);
         $submission->save();
 
-        return redirect()->route('assignment.studentShow', ['course_id' => $course_id, 'assignment' => $assignment])
+        Alert::success('Sucess', 'Your Work has been uploaded');
+        return redirect()->route('assignment.studentShow', ['assignment' => $assignment])
             ->with('UpdateSuccess', 'Submission berhasil diperbarui');
     }
     

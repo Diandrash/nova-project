@@ -17,7 +17,33 @@
     </a>
     
     
-    <a href="/logout" class="relative inline-flex items-center justify-center">
+    <a href="javascript:void(0);" onclick="confirmLogout()" class="relative inline-flex items-center justify-center">
         <img src="/icons/Shutdown.svg" class="w-10 mb-3" alt="">
     </a>
+
 </div>
+
+<!-- Masukkan link SweetAlert CSS dan JS pada halaman Anda (pastikan Anda sudah memasang SweetAlert di proyek Laravel Anda) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<!-- Tambahkan script JavaScript -->
+<script>
+    // Function to display SweetAlert confirmation
+    function confirmLogout() {
+        Swal.fire({
+            title: 'Confirm Logout',
+            text: 'Are you sure you want to logout?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Logout!'
+        }).then((result) => {
+            // If the user confirms logout, redirect to the logout link
+            if (result.isConfirmed) {
+                window.location.href = '/logout';
+            }
+        });
+    }
+</script>

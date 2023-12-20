@@ -12,67 +12,49 @@
 
     </div>
 
-    <div class="course-cards flex flex-wrap justify-between">
-        <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-amber-400 hover:bg-amber-300" onclick="location.href=''">
-            <div class="content ml-6 mt-5 ">
-                <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12 bg-gray-200    overflow-hidden bg-gray-100 rounded-full ">
-                    <img src="icons/Flower.svg" class="w-6" alt="">
-                </div>
-                <h2 class="mt-3 font-bold text-lg">SAAS XII SIJA B</h2>
+    <div class="course-cards flex flex-wrap justify-start gap-5">
+        @forelse ($courses as $index => $course)
+            @php
+                $icons = ['fan', 'sun', 'star', 'cloud', 'bolt', 'snowflake'];
+                $colors = ['blue-500', 'violet-400', 'amber-400', 'violet-600'];
+                // Menggabungkan dan mengacak array ikon dan warna
+                shuffle($icons);
+                shuffle($colors);
 
-                <h3 class="mt-28 font-medium text-base">Progress</h3>
-                <div class="progress-bar flex flex-row mt-3 gap-2">
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 opacity-50"></div>
-                </div>
-            </div>
-        </div>
-        <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-violet-600 hover:bg-violet-500" onclick="location.href=''">
-            <div class="content ml-6 mt-5 ">
-                <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12 bg-gray-200    overflow-hidden bg-gray-100 rounded-full ">
-                    <img src="icons/Data Backup.svg" class="w-6" alt="">
-                </div>
-                <h2 class="mt-3 font-bold text-lg">PKK XII SIJA B</h2>
+                $randomIcon = $icons[0];
+                $randomColor = $colors[0];
+            @endphp
+            <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-{{ $randomColor }}" onclick="location.href='/student/courses/{{ $course->id }}'">
+                <div class="content ml-6 mt-5 ">
+                    <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12 overflow-hidden bg-gray-100 rounded-full ">
+                        <i class="fa-solid fa-{{ $randomIcon }}" alt=""></i>
+                    </div>
+                    <h2 class="mt-3 font-bold text-lg @if ($randomColor == 'violet-400' || $randomColor == 'violet-600') text-white @else text-black @endif">{{ $course->name }}</h2>
 
-                <h3 class="mt-28 font-medium text-base">Progress</h3>
-                <div class="progress-bar flex mt-3 gap-2">
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 opacity-50"></div>
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 opacity-50"></div>
+                    <h3 class="mt-28 font-medium text-base">Progress</h3>
+                    <div class="progress-bar flex flex-row mt-3 gap-2">
+                        <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
+                        <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
+                        <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 opacity-50"></div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-violet-400 hover:bg-violet-600" onclick="location.href=''">
-            <div class="content ml-6 mt-5 ">
-                <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12 bg-gray-200    overflow-hidden bg-gray-100 rounded-full ">
-                    <img src="icons/Hashtag Large.svg" class="w-6" alt="">
+            </div>   
+            
+        @empty
+        <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-transparent hover:bg-gray-200 border-2 border-amber-500 border-dashed cursor-pointer" onclick="location.href='{{ route('courses.join') }}'">
+            <div class="content flex flex-col items-center justify-center pb-8 h-full">
+                <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12  overflow-hidden rounded-full ">
+                    <i class="fa-solid fa-plus text-5xl text-amber-500"></i>
                 </div>
-                <h2 class="mt-3 font-bold text-lg">UI / UX Design</h2>
+                <h2 class="mt-5 font-bold text-lg">Join a Course</h2>
 
-                <h3 class="mt-28 font-medium text-base">Progress</h3>
-                <div class="progress-bar flex mt-3 gap-2">
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 opacity-50"></div>
-                </div>
+                
             </div>
-        </div>
-        <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-amber-400 hover:bg-amber-300" onclick="location.href=''">
-            <div class="content ml-6 mt-5 ">
-                <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12 bg-gray-200    overflow-hidden bg-gray-100 rounded-full ">
-                    <img src="icons/Flower.svg" class="w-6" alt="">
-                </div>
-                <h2 class="mt-3 font-bold text-lg">Big Data</h2>
+        </div>    
+        
+        @endforelse
 
-                <h3 class="mt-28 font-medium text-base">Progress</h3>
-                <div class="progress-bar flex mt-3 gap-2">
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 "></div>
-                    <div class="bar w-14 bg-white rounded-full h-1.5 mb-4 opacity-50"></div>
-                </div>
-            </div>
-        </div>
+
     </div>
 
     <div class="assignments-cards mt-10">
@@ -80,60 +62,34 @@
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 :text-gray-400 mt-3">
                 <tbody>
-                    <tr class="bg-gray-100 border-b hover:bg-violet-200 :border-gray-700">
-                        <th scope="row" class="pr-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
-                            1. <br>
+                    @foreach ($assignments as $assignment)
+                    <tr class="bg-gray-100 border-b hover:bg-violet-200 :border-gray-700" onclick="location.href='{{ route('assignment.studentShow', ['assignment' => $assignment->id]) }}'">
+                        <th scope="row" class="pr-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white px-2">
+                            {{ $loop->iteration }} <br>
                         </th>
                         <th scope="row" class="px-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
-                            Tugas 1 Struktur Website <br>
+                            {{ $assignment->title }} <br>
                         </th>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-center">
+                            @php
+                                $deadline = \Carbon\Carbon::parse($assignment->deadline);
+                                $formattedDeadline = $deadline->format('j F Y | H:i T');
+                            @endphp
                             <span class="font-medium opacity-50 text-sm">
-                                29 Oktober 2023 | 23:59 WIB
+                                {{ $formattedDeadline }}
                             </span>
                         </td>
                         <td class="px-6 py-4 text-center    ">
                             <button type="button" class="text-green-600 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Has Completed</button>
                         </td>
                     </tr>
-                    <tr class="bg-gray-100 border-b hover:bg-violet-200 :border-gray-700">
-                        <th scope="row" class="pr-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
-                            2. <br>
-                        </th>
-                        <th scope="row" class="px-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
-                            Tugas 2 Layout Website <br>
-                        </th>
-                        <td class="px-6 py-4">
-                            <span class="font-medium opacity-50 text-sm">
-                                31 Oktober 2023 | 23:59 WIB
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 text-center">
-                            <button type="button" class="text-red-600 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800">Uncompleted</button>
-                        </td>
-                    </tr>
-                    <tr class="bg-gray-100 border-b hover:bg-violet-200 :border-gray-700">
-                        <th scope="row" class="pr-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
-                            3. <br>
-                        </th>
-                        <th scope="row" class="px-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
-                            Tugas 3 Slicing Website <br>
-                        </th>
-                        <td class="px-6 py-4">
-                            <span class="font-medium opacity-50 text-sm">
-                                31 Oktober 2023 | 23:59 WIB
-                            </span>
-                        </td>
-                        <td class="px-6 py-4 text-center">
-                            <button type="button" class="text-red-600 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-800">Uncompleted</button>
-                        </td>
-                    </tr>
-
+                        
+                    @endforeach
 
                 </tbody>
             </table>
-            <div class="text-more flex justify-center text-base font-semibold mt-3 text-blue-800 hover:text-blue-600">
-                <h2 onclick="location.href=''">View All Assignments</h2>
+            <div class="text-more flex justify-center text-base font-semibold mt-3 text-blue-800 hover:text-blue-600 cursor-pointer">
+                <h2 onclick="location.href='/student/assignments'">View All Assignments</h2>
             </div>
         </div>
     </div>

@@ -24,6 +24,17 @@ class CourseController extends Controller
             "courses" => $courseInUser
         ]);
     }
+    public function homeStudentIndex()
+    {
+        $userId = auth()->user()->id;
+        $user = User::find($userId);
+        $assignments = $user->assignments()->latest('created_at')->take(4)->get();
+        $courseInUser = $user->courses()->take(4)->get();
+        return view('pages.student.index', [
+            "courses" => $courseInUser,
+            "assignments" => $assignments
+        ]);
+    }
 
     public function teacherIndex()
     {
