@@ -26,7 +26,7 @@
                 $randomIcon = $icons[0];
                 $randomColor = $colors[0];
             @endphp
-            <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-{{ $randomColor }}" onclick="location.href='/student/courses/{{ $course->id }}'">
+            <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-{{ $randomColor }}" onclick="location.href='/teacher/courses/{{ $course->id }}'">
                 <div class="content ml-6 mt-5 ">
                     <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12 overflow-hidden bg-gray-100 rounded-full ">
                         <i class="fa-solid fa-{{ $randomIcon }}" alt=""></i>

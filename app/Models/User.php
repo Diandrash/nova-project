@@ -50,8 +50,9 @@ class User extends Authenticatable
 
     public function courses()
     {
-        return $this->belongsToMany(Course::class, 'enrollments');
+        return $this->belongsToMany(Course::class, 'enrollments')->withTimestamps();
     }
+    
 
     //  User Teacher dependency on Course
     public function coursesTaught()

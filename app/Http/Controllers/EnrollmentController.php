@@ -108,6 +108,30 @@ class EnrollmentController extends Controller
             return redirect()->intended('/student/courses')->with('error', 'Error deleting enrollment: ' . $e->getMessage());
         }
     }
+    public function teacherDestroy(Request $request)
+    {
+        // return $request;
+        $validatedData = $request->validate([
+            "course_id" => 'required',
+            "user_id" => 'required'
+        ]);
+
+        $courseId = $validatedData['course_id'];
+        $userId = $validatedData['user_id'];
+        $enrollment = Enrollment::where('course_id', $courseId)->where('user_id', $userId)->first();
+        // dd($enrollment);
+        try {
+            // Hapus enrollment
+            $enrollment->delete();
+    
+            // Redirect dengan pesan sukses jika diperlukan
+            Alert::success('Success!', 'Delete Member Success');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            // Redirect dengan pesan error jika terjadi kesalahan
+            return redirect()->back()->with('error', 'Error deleting enrollment: ' . $e->getMessage());
+        }
+    }
 
     public function getCourse(Request $request) {
         // return $request;

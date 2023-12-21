@@ -46,7 +46,7 @@ class CourseController extends Controller
         $courseInTeacher = Course::where('instructor_id', $userId)->take(4)->get();
         $assignmentsByInstructor = $assignmentModel->assignmentsByInstructor($instructorId)->take(4);
         // dd($courseInTeacher);
-        return view('pages.teacher.index', [
+        return view('pages.teacher.home', [
             "courses" => $courseInTeacher,
             "assignments" => $assignmentsByInstructor,
         ]);
@@ -143,7 +143,7 @@ class CourseController extends Controller
             "users" => $userInCourse
         ]);
     }
-    public function studentShowUser(Request $request, Course $course)
+    public function showStudentCourse(Request $request, Course $course)
     {
         // return $request;
         $courseId = $request->input('courseId');
@@ -156,23 +156,52 @@ class CourseController extends Controller
             "course" => $course
         ]);
     }
+    public function showStudentCourseTeacher(Request $request, Course $course)
+    {
+        // return $request;
+        $courseId = $request->input('courseId');
+        $course = Course::find($courseId);
+        $userInCourse = $course->users->all();
+        
+
+        return view('pages.teacher.course.members', [
+            "users" => $userInCourse,
+            "course" => $course
+        ]);
+    }
 
     // PROGRAM ASSIGNMENTS DIPINDAH DISINI
     public function indexStudent(Request $request)
-{
-    $course_id = $request->input('courseId');
-    // return $course_id;
-    $userId = auth()->user()->id;
-    $user = User::find($userId);
+    {
+        $course_id = $request->input('courseId');
+        // return $course_id;
+        $userId = auth()->user()->id;
+        $user = User::find($userId);
 
-    // Ambil semua assignments yang dimiliki oleh pengguna untuk course tertentu
-    $assignments = $user->assignments()->where('course_id', $course_id)->get();
+        // Ambil semua assignments yang dimiliki oleh pengguna untuk course tertentu
+        $assignments = $user->assignments()->where('course_id', $course_id)->get();
 
-    return view('pages.student.assignment.assignments', [
-        "assignments" => $assignments,
-        "course_id" => $course_id
-    ]);
-}
+        return view('pages.student.assignment.assignments', [
+            "assignments" => $assignments,
+            "course_id" => $course_id
+        ]);
+    }
+
+    public function courseCode(Course $course)
+    {
+        // Mendapatkan course code dari model Course
+        $courseCode = $course->course_code;
+    
+        // Memecah course code menjadi digit-digit terpisah
+        $digits = array_map('intval', str_split($courseCode));
+    
+        // Mengembalikan view dengan data yang diperlukan
+        return view('pages.teacher.course.code', [
+            "course" => $course,
+            "digits" => $digits,
+        ]);
+    }
+    
     
     /**
      * Show the form for editing the specified resource.

@@ -83,29 +83,29 @@
         @endif
 
         @if ($submission->status == 1)
-        <div class="work-item  flex justify-between mt-2 px-5 py-3 w-6/12 bg-gray-200 hover:bg-blue-400 cursor-pointer">
-            <div class="file-place"  onclick="window.open('{{ asset('submissions/' . $submission->submitted_files) }}', '_blank');">
-                <div class="text-left self-center flex">
-                    <i class="fa-solid fa-paperclip  text-base self-center"></i>
-                    <h2 class="text-base font-semibold ml-3">{{ $submission->submitted_files }}</h2>
+            <div class="work-item  flex justify-between mt-2 px-5 py-3 w-6/12 bg-gray-200 hover:bg-blue-400 cursor-pointer">
+                <div class="file-place"  onclick="window.open('{{ asset('submissions/' . $submission->submitted_files) }}', '_blank');">
+                    <div class="text-left self-center flex">
+                        <i class="fa-solid fa-paperclip  text-base self-center"></i>
+                        <h2 class="text-base font-semibold ml-3">{{ $submission->submitted_files }}</h2>
+                    </div>
                 </div>
+                <a class="text-right self-center" href="{{ asset('assignments/' . $assignment->files) }}" download>
+                    <i class="fa-solid fa-download text-gray-800 hover:text-white cursor-pointer"></i>
+                </a>
+                
             </div>
-            <a class="text-right self-center" href="{{ asset('assignments/' . $assignment->files) }}" download>
-                <i class="fa-solid fa-download text-gray-800 hover:text-white cursor-pointer"></i>
-            </a>
-            
-        </div>
             <h1 class="text-title text-sm opacity-70 mt-2">Update your work here</h1>
             <form action="{{ route('assignment.studentUpdate', ['assignment' => $assignment->id, 'submission' => $submission->id]) }}" method="POST" enctype="multipart/form-data">
-                @method('PUT')
-                @csrf
-                <input class="mt-3 w-6/12 border text-base" type="file" name="submitted_files"> <br>
-                <input type="hidden" name="user_id" value={{ auth()->user()->id }}>
-                <input type="hidden" name="assignment_id" value={{ $assignment->id }}>
-                <input type="hidden" name="status" value="1">
-                <button class="py-1 w-6/12 mt-10 rounded-2xl text-base font-semibold text-white bg-violet-500 hover:bg-violet-200">
-                    Update your work
-                </button>
+                    @method('PUT')
+                    @csrf
+                    <input class="mt-3 w-6/12 border text-base" type="file" name="submitted_files"> <br>
+                    <input type="hidden" name="user_id" value={{ auth()->user()->id }}>
+                    <input type="hidden" name="assignment_id" value={{ $assignment->id }}>
+                    <input type="hidden" name="status" value="1">
+                    <button class="py-1 w-6/12 mt-10 rounded-2xl text-base font-semibold text-white bg-violet-500 hover:bg-violet-200">
+                        Update your work
+                    </button>
             </form>
         @endif
 

@@ -49,7 +49,7 @@ class AssignmentController extends Controller
     $courseId = request()->input('courseId');
     $assignments = Assignment::where('course_id', $courseId)->get();
 
-    return view('pages.teacher.assignment.index', [
+    return view('pages.teacher.assignment.assignments', [
         'assignments'=> $assignments
     ]);
     }
@@ -122,7 +122,7 @@ class AssignmentController extends Controller
     {
         // dd($assignment);
         $assignment = Assignment::find($id);
-        return view('pages.teacher.assignment.show', [
+        return view('pages.teacher.assignment.index', [
             "assignment" => $assignment
         ]);
     }
