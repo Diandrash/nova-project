@@ -9,6 +9,7 @@ use App\Models\Submission;
 use illuminate\Http\Request; 
 use App\Http\Requests\StoreAssignmentRequest;
 use App\Http\Requests\UpdateAssignmentRequest;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB; // Import DB Facade
 
 class AssignmentController extends Controller
@@ -47,10 +48,11 @@ class AssignmentController extends Controller
 
     public function courseAssignmentTeacher(){
     $courseId = request()->input('courseId');
+    $course = Course::where('id' , $courseId)->first();
     $assignments = Assignment::where('course_id', $courseId)->get();
-
     return view('pages.teacher.assignment.assignments', [
-        'assignments'=> $assignments
+        'assignments'=> $assignments,
+        'course' => $course,
     ]);
     }
 
@@ -60,7 +62,12 @@ class AssignmentController extends Controller
      */
     public function create()
     {
-        return view('pages.teacher.assignment.create');
+        // return 1;
+        $courseId = request()->input('courseId');
+        $course = Course::where('id' , $courseId)->first();
+        return view('pages.teacher.assignment.create', [
+            "course" => $course,
+        ]);
     }
 
     /**
@@ -68,6 +75,7 @@ class AssignmentController extends Controller
      */
     public function store(StoreAssignmentRequest $request)
     {
+        // return $request;
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'max:1080',
@@ -77,7 +85,7 @@ class AssignmentController extends Controller
         ]);
 
         // Inisialisasi nama file ke null
-        $fileName = '';
+        $fileName = null;
 
         // Upload file tugas jika ada
         if ($request->hasFile('files')) {
@@ -110,8 +118,11 @@ class AssignmentController extends Controller
             ]);
         }
 
-        // return redirect()->intended('/teacher/assignments/{course_id}/showAssignment')->with('AddSuccess', 'Assignment berhasil ditambahkan');
-        return redirect()->route('assignment.index', ['course_id' => $validatedData['course_id'], 'courseId' => $validatedData['course_id']])->with('AddSuccess', 'Assignment berhasil ditambahkan');
+        $assignments = Assignment::where('course_id', $request->course_id)->get();
+        $course = Course::where('id', $request->course_id)->first();
+        // dd($course);
+        Alert::success('Success', 'Adding New Assignment Successfully');
+        return redirect()->route('assignment.index', ['course_id' => $validatedData['course_id'], 'courseId' => $validatedData['course_id'], 'course' => $course])->with('AddSuccess', 'Assignment berhasil ditambahkan');
     }
 
 
@@ -120,6 +131,7 @@ class AssignmentController extends Controller
      */
     public function teacherShow($id)
     {
+        // return 1;
         // dd($assignment);
         $assignment = Assignment::find($id);
         return view('pages.teacher.assignment.index', [
@@ -145,16 +157,65 @@ class AssignmentController extends Controller
      */
     public function edit(Assignment $assignment)
     {
-        //
+        $courseId = request()->input('courseId');
+        $course = Course::where('id', $courseId)->first();
+        // return 1;
+        return view('pages.teacher.assignment.edit', [
+            "assignment" => $assignment,
+            "course" => $course,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function studentUpdate(UpdateAssignmentRequest $request, Assignment $assignment)
+    public function update(UpdateAssignmentRequest $request, $id)
     {
-        return $request;
+        // Validasi data input dari form jika diperlukan
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'max:1080',
+            'deadline' => 'required',
+            'course_id' => 'required',
+            'files' => 'file|mimes:pdf,doc,docx,pptx,xls,jpg,jpeg,png',
+        ]);
+    
+        // Temukan assignment yang akan diperbarui
+        $assignment = Assignment::findOrFail($id);
+    
+        // Inisialisasi nama file ke null
+        $fileName = $assignment->files;
+    
+        // Upload file tugas jika ada
+        if ($request->hasFile('files')) {
+            $file = $request->file('files');
+            $originalName = $file->getClientOriginalName();
+            $fileName = str_replace(' ', '_', $originalName); // Ganti spasi dengan garis bawah
+            $file->move('Assignments', $fileName);
+    
+            // Hapus file lama jika berhasil diunggah yang baru
+            if ($assignment->files) {
+                $oldFilePath = public_path('Assignments/' . $assignment->files);
+                if (file_exists($oldFilePath)) {
+                    unlink($oldFilePath);
+                }
+            }
+        }
+    
+        // Perbarui data yang ada dalam tabel Assignment, termasuk path file jika ada
+        $assignment->update([
+            'title' => $validatedData['title'],
+            'course_id' => $validatedData['course_id'],
+            'description' => $request->input('description'),
+            'deadline' => $request->input('deadline'),
+            'files' => $fileName,
+        ]);
+    
+        $course = Course::where('id', $validatedData['course_id'])->first();
+        Alert::success('Success', 'Assignment successfully updated');
+        return redirect()->route('assignment.index', ['course_id' => $validatedData['course_id'], 'courseId' => $validatedData['course_id'], 'course' => $course]);
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -164,8 +225,8 @@ class AssignmentController extends Controller
         $courseId = request()->input('courseId');
         $assignment->delete();
 
-        return redirect()->route("assignment.index", [
-            'course_id' => $courseId
-        ])->with('DeleteSuccess', 'Assignment has deleted');
+        $course = Course::where('id', $courseId)->first();
+        Alert::success('Success', 'Assignment successfully Deleted');
+        return redirect()->route('assignment.index', ['course_id' => $courseId, 'courseId' => $courseId, 'course' => $course]);;
     }
 }

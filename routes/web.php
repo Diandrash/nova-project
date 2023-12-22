@@ -87,10 +87,12 @@ Route::delete('/teacher/courses/{course}', [CourseController::class, 'destroy'])
 
 
 Route::get('/teacher/assignments/{course}/showAssignment', [AssignmentController::class, 'courseAssignmentTeacher'])->name('assignment.index');
+Route::get('/teacher/assignments/{course}/create', [AssignmentController::class, 'create'])->name('assignment.create');
+Route::post('/teacher/assignments/{course}/create', [AssignmentController::class, 'store'])->name('assignment.store');
 Route::get('/teacher/assignments/{assignment}', [AssignmentController::class, 'teacherShow']);
-Route::get('/teacher/assignments/create', [AssignmentController::class, 'create'])->name('assignment.create');
-Route::post('/teacher/assignments/create', [AssignmentController::class, 'store']);
-Route::delete('/teacher/assignments/{assignment}', [AssignmentController::class, 'destroy'])->name('assignment.destroy');
+Route::get('/teacher/assignments/{assignment}/edit', [AssignmentController::class, 'edit'])->name('assignment.edit');
+Route::put('/teacher/assignments/{assignment}/edit', [AssignmentController::class, 'update'])->name('assignment.update');
+Route::delete('/teacher/assignments/{assignment}/delete', [AssignmentController::class, 'destroy'])->name('assignment.destroy');
 
 
 

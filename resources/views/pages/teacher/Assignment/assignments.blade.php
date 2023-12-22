@@ -10,7 +10,8 @@
         </div>
     </div>
 
-    <div class="add-assignment flex w-48 py-1.5 px-3 bg-amber-300 hover:bg-amber-500 cursor-pointer mt-5 rounded" onclick="location.href='{{ route('assignment.create') }}'">
+
+    <div class="add-assignment flex w-48 py-1.5 px-3 bg-amber-300 hover:bg-amber-500 cursor-pointer mt-5 rounded" onclick="location.href='{{ route('assignment.create', ['course' => $course->id, 'courseId' => $course->id]) }}'">
         <i class="fa-solid fa-plus text-xl self-center"></i>
         <h1 class="text-base ml-2 font-semibold">Create Assignment</h1>
     </div>
@@ -68,8 +69,18 @@
                     </td>
                     <td class="action text-center py-4 flex justify-center">
                         <i class="fa-solid fa-eye text-base text-white hover:text-gray-300 p-2 mx-1 bg-green-700 rounded" onclick="location.href='/teacher/assignments/{{ $assignment->id }}'"></i>
-                        <i class="fa-solid fa-pencil text-base text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='editAssignmentTeacher.html'"></i>
-                        <i class="fa-solid fa-trash text-base text-white hover:text-gray-300 p-2 mx-1 bg-red-500 rounded"></i>
+
+                        <i class="fa-solid fa-pencil text-base text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='{{ route('assignment.edit', ['assignment' => $assignment->id, 'courseId' => $course->id]) }}'"></i>
+
+                        <form class="deleteAssignment" action="{{ route('assignment.destroy', ['assignment' => $assignment->id, 'courseId' => $course->id]) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="hidden" name="id" value="{{ $assignment->id }}">
+                            <button type="button" class="attribute" onclick="confirmDelete(this)">
+                                <i class="fa-solid fa-trash text-base text-white hover:text-gray-300 p-2 mx-1 bg-red-500 rounded"></i>
+                            </button>
+                            
+                        </form>
                     </td>
                     <td class="show-submission px-6 py-4 text-center">
                         <button type="button" class="py-2 px-7 me-2 mb-2 text-white text-sm font-medium focus:outline-none bg-violet-500 rounded-full border hover:shadow-lg hover:bg-violet-700 cursor-pointer" onclick="location.href='submissionsTeacher.html'">Show Submission</button>
@@ -86,4 +97,28 @@
             </tbody>
         </table>
     </div>
+
+
+    <script>
+        function confirmDelete(button) {
+            // Tampilkan SweetAlert konfirmasi
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will not be able to undo this action!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Confirm Delete'
+            }).then((result) => {
+                // Jika pengguna mengonfirmasi, kirim formulir terkait
+                if (result.isConfirmed) {
+                    // Temukan formulir terkait dengan tombol yang diklik
+                    var form = button.closest('.deleteAssignment');
+                    form.submit();
+                }
+            });
+        }
+    </script>
+    
 @endsection

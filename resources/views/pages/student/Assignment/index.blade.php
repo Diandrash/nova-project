@@ -47,21 +47,24 @@
     <p>{{ $assignment->description }}</p>
 </div>
 
+
 <div class="assignment-attachment mt-7">
 
     <h1 class="text-sm opacity-70 mt-3">Attachment :</h1>
-    <div class="attachment-item  flex justify-between mt-2 px-5 py-3 w-6/12 bg-gray-200 hover:bg-blue-400 cursor-pointer">
-        <div class="file-place"  onclick="window.open('{{ asset('assignments/' . $assignment->files) }}', '_blank');">
-            <div class="text-left self-center flex">
-                <i class="fa-solid fa-paperclip  text-base self-center"></i>
-                <h2 class="text-base font-semibold ml-3">{{ $assignment->files }}</h2>
+    @if ($assignment->files)
+        <div class="attachment-item  flex justify-between mt-2 px-5 py-3 w-6/12 bg-gray-200 hover:bg-blue-400 cursor-pointer">
+            <div class="file-place self-center"  onclick="window.open('{{ asset('assignments/' . $assignment->files) }}', '_blank');">
+                <div class="text-left self-center flex">
+                    <i class="fa-solid fa-paperclip  text-base self-center"></i>
+                    <h2 class="text-base font-semibold ml-3 self-center">{{ $assignment->files }}</h2>
+                </div>
             </div>
+            <a class="text-right self-center" href="{{ asset('assignments/' . $assignment->files) }}" download>
+                <i class="fa-solid fa-download text-gray-800 hover:text-white cursor-pointer self-center"></i>
+            </a>
+            
         </div>
-        <a class="text-right self-center" href="{{ asset('assignments/' . $assignment->files) }}" download>
-            <i class="fa-solid fa-download text-gray-800 hover:text-white cursor-pointer"></i>
-        </a>
-        
-    </div>
+    @endif
 
     <div class="attachment-work mt-5">
     <h1 class="text-sm opacity-70 mt-3">Your Work :</h1>
