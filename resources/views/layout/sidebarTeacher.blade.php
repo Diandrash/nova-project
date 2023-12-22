@@ -10,7 +10,7 @@
     <a href="/teacher/courses" class="relative inline-flex items-center justify-center">
         <img src="/icons/Graduation Cap.svg" class="w-10" alt="">
     </a>
-    <a href="" class="relative inline-flex items-center justify-center">
+    <a href="/teacher/assignments" class="relative inline-flex items-center justify-center">
         <img src="/icons/Backpack.svg" class="w-10" alt="">
     </a>
     <a href="" class="relative inline-flex items-center justify-center">

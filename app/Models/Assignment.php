@@ -38,10 +38,10 @@ class Assignment extends Model
     
     // Dalam model Assignment.php
 
-    public function assignmentsByInstructor($instructorId)
+    public static function assignmentsByInstructor($instructorId)
     {
         // Ambil semua assignment yang memiliki course dengan instructor_id yang diinputkan
-        return $this->whereHas('course', function ($query) use ($instructorId) {
+        return self::whereHas('course', function ($query) use ($instructorId) {
             $query->where('instructor_id', $instructorId);
         })->get();
     }

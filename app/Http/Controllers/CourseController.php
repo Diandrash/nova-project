@@ -32,7 +32,7 @@ class CourseController extends Controller
         $user = User::find($userId);
         $assignments = $user->assignments()->latest('created_at')->take(4)->get();
         $courseInUser = $user->courses()->take(4)->get();
-        return view('pages.student.index', [
+        return view('pages.student.home', [
             "courses" => $courseInUser,
             "assignments" => $assignments
         ]);

@@ -45,6 +45,20 @@ class AssignmentController extends Controller
             'assignments' => $assignments
         ]);
     }
+    // Menampilkan Semua Assignment yang dimiliki oleh Teacher
+    public function showAssignmentsByInstructor()
+    {
+        // Mendapatkan ID instruktur dari user yang sedang terautentikasi
+        $instructorId = auth()->user()->id;
+    
+        // Ambil semua assignment yang dimiliki oleh instruktur
+        $assignments = Assignment::assignmentsByInstructor($instructorId);
+    
+        // Tampilkan data assignments ke view atau lakukan sesuai kebutuhan
+        return view('pages.teacher.assignment.assignmentsAll', compact('assignments'));
+    }
+    
+
 
     public function courseAssignmentTeacher(){
     $courseId = request()->input('courseId');

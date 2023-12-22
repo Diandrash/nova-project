@@ -11,10 +11,6 @@
     </div>
 
 
-    <div class="add-assignment flex w-48 py-1.5 px-3 bg-amber-300 hover:bg-amber-500 cursor-pointer mt-5 rounded" onclick="location.href='{{ route('assignment.create', ['course' => $course->id, 'courseId' => $course->id]) }}'">
-        <i class="fa-solid fa-plus text-xl self-center"></i>
-        <h1 class="text-base ml-2 font-semibold">Create Assignment</h1>
-    </div>
     <div class="table-assignments relative overflow-x-auto mt-2">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 :text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-100 :bg-gray-700 :text-gray-400">
@@ -70,9 +66,12 @@
                     <td class="action text-center py-4 flex justify-center">
                         <i class="fa-solid fa-eye text-base text-white hover:text-gray-300 p-2 mx-1 bg-green-700 rounded" onclick="location.href='/teacher/assignments/{{ $assignment->id }}'"></i>
 
-                        <i class="fa-solid fa-pencil text-base text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='{{ route('assignment.edit', ['assignment' => $assignment->id, 'courseId' => $course->id]) }}'"></i>
+                        @php
+                            $courseId = $assignment->course->id
+                        @endphp
+                        <i class="fa-solid fa-pencil text-base text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='{{ route('assignment.edit', ['assignment' => $assignment->id, 'courseId' => $courseId]) }}'"></i>
 
-                        <form class="deleteAssignment" action="{{ route('assignment.destroy', ['assignment' => $assignment->id, 'courseId' => $course->id]) }}" method="post">
+                        <form class="deleteAssignment" action="{{ route('assignment.destroy', ['assignment' => $assignment->id, 'courseId' => $courseId]) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="id" value="{{ $assignment->id }}">

@@ -24,4 +24,33 @@
         </div>
     </section>
     <!-- {{-- END HERO SECTION --}} -->
+
+    @if (session()->has('loginSuccess'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer);
+                        toast.addEventListener('mouseleave', Swal.resumeTimer);
+                    },
+                });
+
+                // Display the Toast with success icon and the session message
+                Toast.fire({
+                    icon: 'success',
+                    title: '{{ session('loginSuccess') }}',
+                });
+            });
+        </script>
+        {{-- Clear the session value to avoid displaying the same message on subsequent requests --}}
+        @php
+            session()->forget('loginSuccess');
+        @endphp
+    @endif
+    
 @endsection

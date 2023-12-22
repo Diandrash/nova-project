@@ -28,7 +28,7 @@ class LoginController extends Controller
             } 
 
             if ( Auth::user()->role_id == 2 ) {
-                return redirect()->intended('/teacher');
+                return redirect()->intended('/teacher')->with('loginSuccess', 'Login Success');
             }
         }
 

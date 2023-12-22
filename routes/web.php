@@ -86,6 +86,7 @@ Route::put('/teacher/courses/{course}/edit', [CourseController::class, 'update']
 Route::delete('/teacher/courses/{course}', [CourseController::class, 'destroy']);
 
 
+Route::get('/teacher/assignments', [AssignmentController::class, 'showAssignmentsByInstructor'])->name('assignment.index');
 Route::get('/teacher/assignments/{course}/showAssignment', [AssignmentController::class, 'courseAssignmentTeacher'])->name('assignment.index');
 Route::get('/teacher/assignments/{course}/create', [AssignmentController::class, 'create'])->name('assignment.create');
 Route::post('/teacher/assignments/{course}/create', [AssignmentController::class, 'store'])->name('assignment.store');

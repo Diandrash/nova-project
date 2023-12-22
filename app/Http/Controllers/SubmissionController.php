@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Submission;
 use App\Models\Assignment;
+use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubmissionRequest;
@@ -20,9 +21,14 @@ class SubmissionController extends Controller
         $assignmentId = request()->input("assignmentId");
         $assignment = Assignment::find($assignmentId);
         $submissions = $assignment->submissions;
+        $courseId = $assignment->course->id;
+        $course = Course::find($courseId);
         // return dd($submissions);
-        return view('pages.teacher.submissions.index', 
-        ["submissions" => $submissions]);
+        return view('pages.teacher.submission.index', [
+            "submissions" => $submissions,
+            "course" => $course,
+            "assignment" => $assignment,
+        ]);
     }
 
 
