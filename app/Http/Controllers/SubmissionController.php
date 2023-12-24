@@ -106,7 +106,26 @@ class SubmissionController extends Controller
     }
     
     
+    public function updateMark(Request $request, $assignment, $submission)
+    {
+        // return 1;
+        // Logika untuk mengupdate mark di sini
+        // ...
+    
+        // Contoh: Set nilai mark dari request
+        $newMark = $request->input('mark');
+    
+        // Contoh: Simpan perubahan pada model Submission
+        $submissionModel = Submission::find($submission);
+        $submissionModel->mark = $newMark;
+        $submissionModel->save();
+    
 
+        
+        // Kembalikan respons redirect
+        // return redirect()->intended('/teacher/courses');
+    }
+    
 
     /**
      * Remove the specified resource from storage.

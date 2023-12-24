@@ -62,6 +62,6 @@ class User extends Authenticatable
 
     public function assignments() 
     {
-        return $this->belongsToMany(Assignment::class,'submissions')->withPivot('status');
+        return $this->belongsToMany(Assignment::class,'submissions')->withPivot('status', 'mark');
     }
 }

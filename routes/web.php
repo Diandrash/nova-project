@@ -83,14 +83,14 @@ Route::delete('/teacher/courses/{course}/members/{user}', [EnrollmentController:
 Route::get('/teacher/courses/{course}/code', [CourseController::class, 'courseCode']);
 Route::get('/teacher/courses/{course}/edit', [CourseController::class, 'edit']);
 Route::put('/teacher/courses/{course}/edit', [CourseController::class, 'update']);
-Route::delete('/teacher/courses/{course}', [CourseController::class, 'destroy']);
+Route::delete('/teacher/courses/{course}', [CourseController::class, 'destroy'])->name('course.destroy');
 
 
 Route::get('/teacher/assignments', [AssignmentController::class, 'showAssignmentsByInstructor'])->name('assignment.index');
 Route::get('/teacher/assignments/{course}/showAssignment', [AssignmentController::class, 'courseAssignmentTeacher'])->name('assignment.index');
 Route::get('/teacher/assignments/{course}/create', [AssignmentController::class, 'create'])->name('assignment.create');
 Route::post('/teacher/assignments/{course}/create', [AssignmentController::class, 'store'])->name('assignment.store');
-Route::get('/teacher/assignments/{assignment}', [AssignmentController::class, 'teacherShow']);
+Route::get('/teacher/assignments/{assignment}', [AssignmentController::class, 'teacherShow'])->name('assignment.teacherShow');
 Route::get('/teacher/assignments/{assignment}/edit', [AssignmentController::class, 'edit'])->name('assignment.edit');
 Route::put('/teacher/assignments/{assignment}/edit', [AssignmentController::class, 'update'])->name('assignment.update');
 Route::delete('/teacher/assignments/{assignment}/delete', [AssignmentController::class, 'destroy'])->name('assignment.destroy');
@@ -105,6 +105,7 @@ Route::put('/teacher/materials/{material}/edit', [MaterialController::class, 'up
 Route::delete('/teacher/materials/{material}/delete', [MaterialController::class, 'destroy'])->name('materials.delete');
 
 Route::get('/teacher/assignments/{assignment}/submissions', [SubmissionController::class, 'index'])->name('submission.index');
+Route::put('/teacher/assignments/{assignment}/submissions/{submission}/mark', [SubmissionController::class, 'updateMark'])->name('submission.mark');
 
 
 

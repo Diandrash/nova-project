@@ -240,12 +240,10 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         Course::destroy($course->id);
-        return redirect('/teacher/courses/my_courses')->with('successDelete', 'success');
+
+        Alert::success('Success', 'Course Deleted Succesfully');
+        return redirect()->intended('/teacher/courses');
     }
 
 
-
-    public function myCourse() {
-
-    }
 }

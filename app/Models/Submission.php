@@ -17,6 +17,7 @@ class Submission extends Model
         'user_id',
         'submission_text',
         'submitted_files',
+        'mark',
         'status',
     ];
 

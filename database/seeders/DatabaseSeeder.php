@@ -76,7 +76,7 @@ class DatabaseSeeder extends Seeder
         
         Enrollment::factory()->create([
             'course_id' => 6,
-            'user_id' => 1
+            'user_id' => 7
         ]);
 
         Enrollment::factory()->create([
@@ -89,7 +89,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Tugas 2',
             'description' => 'Ini adalah deskripsi tugas 2.',
             'deadline' => now()->addDays(10),
-            'files' => 'tugas2.docx',
+            'files' => 'NETWORKING_ENGINEERING.png',
         ]);
 
         Assignment::factory()->create([
@@ -97,7 +97,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Tugas 2',
             'description' => 'Ini adalah deskripsi tugas 2.',
             'deadline' => now()->addDays(10),
-            'files' => 'tugas2.docx',
+            'files' => 'NETWORKING_ENGINEERING.png',
         ]);
 
         Submission::factory()->create([

@@ -15,27 +15,29 @@
     <div class="text-top flex flex-wrap justify-between">
         <div class="text-left">
             <h1 class="font-bold text-3xl">{{ $assignment->title }}</h1>
-            <h3 class="font-semibold text-medium  opacity-70">{{ $assignment->course->name }}</h3>
         </div>
-
+        
+        <button type="button" class="py-2 self-center me-10 px-7 text-white text-sm font-medium focus:outline-none bg-violet-500 rounded-full border hover:shadow-lg hover:bg-violet-700 cursor-pointer" onclick="location.href='{{ route('submission.index', ['assignmentId' => $assignment->id, 'assignment' => $assignment->id]) }}'">Show Submission</button>
+        
         <div class="text-right self-center">
             <div class="text-deadline flex">
                 <i class="fa-solid fa-bell text-sm text-blue-600 self-center"></i>
                 @php
                     $deadline = \Carbon\Carbon::parse($assignment->deadline);
                     $formattedDeadline = $deadline->format('j F Y | H:i T');
-                @endphp
+                    @endphp
                 <h2 class="font-medium text-sm text-blue-600 self-center ml-2">Closing on {{ $formattedDeadline }}</h2>
             </div>
-
+            
             
         </div>
     </div>
+    <h3 class="font-semibold text-medium mt-2 opacity-70">{{ $assignment->course->name }}</h3>
 </div>
 
 <div class="assignment-instruction mt-7 w-10/12">
     <h1 class="text-sm opacity-70 mt-3">Instructions :</h1>
-    <p>{{ $assignment->description }}</p>
+    <p>{!! $assignment->description !!}</p>
 </div>
 
 <div class="assignment-attachment mt-7">

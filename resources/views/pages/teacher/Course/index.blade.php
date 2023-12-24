@@ -39,10 +39,18 @@
             <i class="fa-solid fa-users text-base text-black self-center"></i>
             <h1 class="text-base font-medium self-center ml-3 cursor-pointer">Members</h1>
         </div>
-        <div class="attribute delete-course flex px-5 mt-3 py-1.5 bg-red-500 hover:bg-red-700 rounded-full" onclick="location.href=''">
-            <i class="fa-solid fa-trash text-base text-white self-center"></i>
-            <h1 class="text-base text-white font-medium self-center ml-3 cursor-pointer">Delete</h1>
-        </div>
+
+        <form class="deleteCourse" action="{{ route('course.destroy', ['course' => $course->id]) }}" method="post">
+            @csrf
+            @method('DELETE')
+            <input type="hidden" name="id" value="{{ $course->id }}">
+
+            <div class="attribute delete-course flex px-5 mt-3 py-1.5 bg-red-500 hover:bg-red-700 rounded-full" onclick="confirmDelete(this)">
+                <i class="fa-solid fa-trash text-base text-white self-center"></i>
+                <h1 class="text-base text-white font-medium self-center ml-3 cursor-pointer">Delete</h1>
+            </div>
+        </form>
+
     </div>
 
     <div class="course-description mt-7">
@@ -52,4 +60,27 @@
 
         <p class="mt-1 font-normal">{{ $course->description }}</p>
     </div>
+
+    <script>
+        function confirmDelete(button) {
+            // Tampilkan SweetAlert konfirmasi
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You will not be able to undo this action!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Confirm Leave'
+            }).then((result) => {
+                // Jika pengguna mengonfirmasi, kirim formulir terkait
+                if (result.isConfirmed) {
+                    // Temukan formulir terkait dengan tombol yang diklik
+                    var form = button.closest('.deleteCourse');
+                    form.submit();
+                }
+            });
+        }
+    </script>
+    
 @endsection

@@ -65,14 +65,14 @@
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 :text-gray-400 mt-3">
                 <tbody>
                     @foreach ($assignments as $assignment)
-                    <tr class="bg-gray-100 border-b hover:bg-violet-200 :border-gray-700" onclick="location.href='{{ route('assignment.studentShow', ['assignment' => $assignment->id]) }}'">
+                    <tr class="bg-gray-100 border-b hover:bg-violet-200 :border-gray-700" >
                         <th scope="row" class="pr-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white px-2">
                             {{ $loop->iteration }} <br>
                         </th>
-                        <th scope="row" class="px-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
+                        <th scope="row" class="px-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white" onclick="location.href='{{ route('assignment.teacherShow', ['assignment' => $assignment->id]) }}'">
                             {{ $assignment->title }} <br>
                         </th>
-                        <td class="px-6 py-4 text-center">
+                        <td class="px-6 py-4 text-center" onclick="location.href='{{ route('assignment.teacherShow', ['assignment' => $assignment->id]) }}'">
                             @php
                                 $deadline = \Carbon\Carbon::parse($assignment->deadline);
                                 $formattedDeadline = $deadline->format('j F Y | H:i T');
@@ -81,9 +81,10 @@
                                 {{ $formattedDeadline }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 text-center    ">
-                            <button type="button" class="text-green-600 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Has Completed</button>
+                        <td class="show-submission px-6 py-4 text-center">
+                            <button type="button" class="py-2 px-7 me-2 mb-2 text-black text-sm font-medium focus:outline-none bg-amber-300 rounded-full border hover:shadow-lg hover:bg-amber-500 cursor-pointer" onclick="location.href='{{ route('submission.index', ['assignmentId' => $assignment->id, 'assignment' => $assignment->id]) }}'">Show Submission</button>
                         </td>
+    
                     </tr>
                         
                     @endforeach

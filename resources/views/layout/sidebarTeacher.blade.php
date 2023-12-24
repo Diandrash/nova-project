@@ -5,13 +5,13 @@
         </div>
     </a>
     <a href="/teacher" class="relative inline-flex items-center justify-center">
-        <img src="/icons/Home.svg" class="w-10" alt="">
+        <img src=" {{ (request()->is('teacher')) ? '/icons/HomeFilled.svg' : '/icons/Home.svg' }}" class="w-10" alt="">
     </a>
-    <a href="/teacher/courses" class="relative inline-flex items-center justify-center">
-        <img src="/icons/Graduation Cap.svg" class="w-10" alt="">
+    <a href="/teacher/courses" class="relative inline-flex items-center justify-center {{ (request()->is('teacher/courses*')) ? 'active' : '' }}">
+        <img src=" {{ (request()->is('teacher/courses*')) ? '/icons/GraduationFilled.svg' : '/icons/Graduation Cap.svg' }}" class="w-10" alt="">
     </a>
-    <a href="/teacher/assignments" class="relative inline-flex items-center justify-center">
-        <img src="/icons/Backpack.svg" class="w-10" alt="">
+    <a href="/teacher/assignments" class="relative inline-flex items-center justify-center ">
+        <img src=" {{ (request()->is('teacher/assignments*')) ? '/icons/BackpackFilled.svg' : '/icons/Backpack.svg' }}" class="w-10" alt="">
     </a>
     <a href="" class="relative inline-flex items-center justify-center">
     </a>

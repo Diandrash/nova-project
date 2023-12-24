@@ -5,13 +5,13 @@
         </div>
     </a>
     <a href="/student" class="relative inline-flex items-center justify-center">
-        <img src="/icons/Home.svg" class="w-10" alt="">
+        <img src=" {{ (request()->is('student')) ? '/icons/HomeFilled.svg' : '/icons/Home.svg' }}" class="w-10" alt="">
     </a>
     <a href="/student/courses" class="relative inline-flex items-center justify-center">
-        <img src="/icons/Graduation Cap.svg" class="w-10" alt="">
+        <img src=" {{ (request()->is('student/courses*')) ? '/icons/GraduationFilled.svg' : '/icons/Graduation Cap.svg' }}" class="w-10" alt="">
     </a>
     <a href="/student/assignments" class="relative inline-flex items-center justify-center">
-        <img src="/icons/Backpack.svg" class="w-10" alt="">
+        <img src=" {{ (request()->is('student/assignments*')) ? '/icons/BackpackFilled.svg' : '/icons/Backpack.svg' }}" class="w-10" alt="">
     </a>
     <a href="" class="relative inline-flex items-center justify-center">
     </a>

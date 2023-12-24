@@ -22,6 +22,9 @@
                 <th scope="col" class=" py-3 text-center">
                     Due on
                 </th>
+                <th scope="col" class=" py-3 text-center">
+                    Mark
+                </th>
                 <th scope="col" class="px-6 py-3 text-center">
                     Status
                 </th>
@@ -59,6 +62,9 @@
                 
                     <h3 class="text-black font-bold">{{ $formattedDeadline }}</h3>
                 </td>
+                <th scope="row" class="px-6 py-4 font-bold text-base text-green-600 whitespace-nowrap :text-white text-center">
+                    {{ $assignment->pivot->mark }}/100 <br>
+                </th>
                 <td class="px-6 py-4 text-center">
                     @if($assignment->pivot->status == 1)
                         <button type="button" class="py-2 px-7 me-2 mb-2 text-green-500 text-sm font-medium focus:outline-none bg-gray-100 rounded-full border border-green-200 hover:bg-green-100 hover:text-blue-1 focus:z-10 focus:ring-4 focus:ring-green-200 :focus:ring-green-1 :bg-green-800 :text-green-400 :border-green-600 :hover:text-white :hover:bg-green-700">Completed</button>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('submission_text')->nullable();
             $table->text('submitted_files')->nullable();
             $table->boolean('status')->default(0); // Menambahkan kolom status
+            $table->integer('mark')->nullable();
             $table->timestamps();
 
             $table->foreign('assignment_id')->references('id')->on('assignments')->onDelete('cascade');
