@@ -4,9 +4,14 @@
     <div class="welcome-text main flex justify-between">
         <h1 class="text-2xl font-semibold">All Assignments</span></h1>
         <div class="text-right flex">
-            <h1 class="text-base opacity-70 font-medium self-center">Senin, 15 Desember 2023</h1>
-            <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900" name="chevron-back-outline"></ion-icon>
-            <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900" name="chevron-forward-outline"></ion-icon>
+            @php
+                $timezone = new DateTimeZone('Asia/Jakarta');
+                $date = new DateTime('now', $timezone);
+                $formattedDate = $date->format('l, d F Y ');
+            @endphp
+            <h1 class="text-base opacity-70 font-medium self-center md:block hidden">{{ $formattedDate }}</h1>
+            <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900 md:block hidden" name="chevron-back-outline"></ion-icon>
+            <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900 md:block hidden" name="chevron-forward-outline"></ion-icon>
         </div>
     </div>
 
@@ -47,7 +52,7 @@
                     </td>
                     <th scope="row" class="assignment-name px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         <div class="flex">
-                            <div class="icon py-3 px-4 rounded-full bg-gray-200">
+                            <div class="icon py-3 px-4 rounded-full bg-gray-200 md:block hidden">
                                 <i alt="icon" class="fa-solid fa-{{ $randomIcon }} bg-gray-10 text-{{ $randomColor }}"></i>
                             </div>
                             <div class="text ml-3">
@@ -61,28 +66,28 @@
                             $deadline = \Carbon\Carbon::parse($assignment->deadline);
                             $formattedDeadline = $deadline->format('j F Y | H:i T');
                         @endphp
-                        <h3 class="text-black font-bold">{{ $formattedDeadline }}</h3>
+                        <h3 class="text-black font-bold whitespace-nowrap">{{ $formattedDeadline }}</h3>
                     </td>
-                    <td class="action text-center py-4 flex justify-center">
-                        <i class="fa-solid fa-eye text-base text-white hover:text-gray-300 p-2 mx-1 bg-green-700 rounded" onclick="location.href='/teacher/assignments/{{ $assignment->id }}'"></i>
+                    <td class="action text-center py-4 px-3 flex justify-center">
+                        <i class="fa-solid fa-eye md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-green-700 rounded" onclick="location.href='/teacher/assignments/{{ $assignment->id }}'"></i>
 
                         @php
                             $courseId = $assignment->course->id
                         @endphp
-                        <i class="fa-solid fa-pencil text-base text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='{{ route('assignment.edit', ['assignment' => $assignment->id, 'courseId' => $courseId]) }}'"></i>
+                        <i class="fa-solid fa-pencil md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='{{ route('assignment.edit', ['assignment' => $assignment->id, 'courseId' => $courseId]) }}'"></i>
 
                         <form class="deleteAssignment" action="{{ route('assignment.destroy', ['assignment' => $assignment->id, 'courseId' => $courseId]) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <input type="hidden" name="id" value="{{ $assignment->id }}">
                             <button type="button" class="attribute" onclick="confirmDelete(this)">
-                                <i class="fa-solid fa-trash text-base text-white hover:text-gray-300 p-2 mx-1 bg-red-500 rounded"></i>
+                                <i class="fa-solid fa-trash md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-red-500 rounded"></i>
                             </button>
                             
                         </form>
                     </td>
                     <td class="show-submission px-6 py-4 text-center">
-                        <button type="button" class="py-2 px-7 me-2 mb-2 text-white text-sm font-medium focus:outline-none bg-violet-500 rounded-full border hover:shadow-lg hover:bg-violet-700 cursor-pointer" onclick="location.href='{{ route('submission.index', ['assignmentId' => $assignment->id, 'assignment' => $assignment->id]) }}'">Show Submission</button>
+                        <button type="button" class="py-2 px-7 me-2 mb-2 text-white text-sm font-medium focus:outline-none bg-violet-500 rounded-full border hover:shadow-lg hover:bg-violet-700 cursor-pointer whitespace-nowrap" onclick="location.href='{{ route('submission.index', ['assignmentId' => $assignment->id, 'assignment' => $assignment->id]) }}'">Show Submission</button>
                     </td>
 
                 </tr>

@@ -1,23 +1,23 @@
-<div class="sidebar flex flex-col w-20 mt-3 fixed justify-between text-center rounded-full shadow-lg" style="background-color: #7537D8; height: 35rem;">
+<div class="sidebar sidebar-student flex flex-col w-20 md:mt-3 mt-0 fixed justify-between text-center md:rounded-full rounded-none shadow-lg" >
     <a href="">
-        <div class="relative inline-flex items-center justify-center w-16 mt-3 h-16  overflow-hidden bg-gray-100 rounded-full ">
+        <div class="relative inline-flex items-center justify-center md:w-16 w-14 md:h-16 h-14 mt-3  md:ml-0 ml-2 overflow-hidden bg-gray-100 rounded-full ">
             <img src="https://i.pinimg.com/564x/03/39/27/033927806d11bab51c919cd265b6960b.jpg" alt="">
         </div>
     </a>
-    <a href="/student" class="relative inline-flex items-center justify-center">
+    <a href="/student" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
         <img src=" {{ (request()->is('student')) ? '/icons/HomeFilled.svg' : '/icons/Home.svg' }}" class="w-10" alt="">
     </a>
-    <a href="/student/courses" class="relative inline-flex items-center justify-center">
+    <a href="/student/courses" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
         <img src=" {{ (request()->is('student/courses*')) ? '/icons/GraduationFilled.svg' : '/icons/Graduation Cap.svg' }}" class="w-10" alt="">
     </a>
-    <a href="/student/assignments" class="relative inline-flex items-center justify-center">
+    <a href="/student/assignments" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
         <img src=" {{ (request()->is('student/assignments*')) ? '/icons/BackpackFilled.svg' : '/icons/Backpack.svg' }}" class="w-10" alt="">
     </a>
-    <a href="" class="relative inline-flex items-center justify-center">
+    <a href="" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
     </a>
     
     
-    <a href="javascript:void(0);" onclick="confirmLogout()" class="relative inline-flex items-center justify-center">
+    <a href="javascript:void(0);" onclick="confirmLogout()" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
         <img src="/icons/Shutdown.svg" class="w-10 mb-3" alt="">
     </a>
 

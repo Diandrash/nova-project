@@ -4,13 +4,18 @@
     <div class="welcome-text main flex justify-between">
         <h1 class="text-2xl font-bold">Edit Assignment</span></h1>
         <div class="text-right flex">
-            <h1 class="text-base opacity-70 font-medium self-center">Senin, 15 Desember 2023</h1>
-            <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900" name="chevron-back-outline"></ion-icon>
-            <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900" name="chevron-forward-outline"></ion-icon>
+            @php
+                $timezone = new DateTimeZone('Asia/Jakarta');
+                $date = new DateTime('now', $timezone);
+                $formattedDate = $date->format('l, d F Y ');
+            @endphp
+            <h1 class="text-base opacity-70 font-medium self-center md:block hidden">{{ $formattedDate }}</h1>
+            <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900 md:block hidden" name="chevron-back-outline"></ion-icon>
+            <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900 md:block hidden" name="chevron-forward-outline"></ion-icon>
         </div>
     </div>
 
-    <div class="form-area mt-8 w-6/12">
+    <div class="form-area mt-8 md:w-6/12 w-full">
     <form action="{{ route('assignment.update', ['assignment' => $assignment->id]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')

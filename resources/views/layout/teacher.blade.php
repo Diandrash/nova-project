@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
         <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
         <link rel="stylesheet" href="{{ asset('css/viewer.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     </head>
     <body class="bg-gray-100">
         @include('sweetalert::alert')
@@ -16,7 +17,7 @@
             <div class="sidebar-area w-2/12 flex justify-center ">
                 @include('layout.sidebarTeacher')
             </div>
-            <div class="main-area mt-7 w-10/12 mr-4 pb-10">
+            <div class="main-area mt-7 w-10/12 md:mr-4 mr-2 md:ml-0 ml-7 pb-10">
                 @yield('container')
             </div>
         </div>

@@ -5,11 +5,16 @@
 
 
     <div class="welcome-text main flex justify-between">
+        @php
+            $timezone = new DateTimeZone('Asia/Jakarta');
+            $date = new DateTime('now', $timezone);
+            $formattedDate = $date->format('l, d F Y ');
+        @endphp
         <h1 class="text-2xl font-semibold">Welcome, <span class="font-bold">{{ auth()->user()->fullname }}</span></span></h1>
         <div class="text-right flex">
-            <h1 class="text-base opacity-70 font-medium self-center">Senin, 15 Desember 2023</h1>
-            <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900" name="chevron-back-outline"></ion-icon>
-            <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900" name="chevron-forward-outline"></ion-icon>
+            <h1 class="text-base opacity-70 font-medium self-center md:block hidden">{{ $formattedDate }}</h1>
+            <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900 md:block hidden" name="chevron-back-outline"></ion-icon>
+            <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900 md:block hidden" name="chevron-forward-outline"></ion-icon>
         </div>
 
     </div>
@@ -26,7 +31,7 @@
                 $randomIcon = $icons[0];
                 $randomColor = $colors[0];
             @endphp
-            <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-{{ $randomColor }}" onclick="location.href='/student/courses/{{ $course->id }}'">
+            <div class="card md:w-60 w-full h-80 rounded-3xl shadow-xl mt-5 bg-{{ $randomColor }}" onclick="location.href='/student/courses/{{ $course->id }}'">
                 <div class="content ml-6 mt-5 ">
                     <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12 overflow-hidden bg-gray-100 rounded-full ">
                         <i class="fa-solid fa-{{ $randomIcon }}" alt=""></i>
@@ -60,19 +65,19 @@
     </div>
 
     <div class="assignments-cards mt-10">
-        <h1 class="text-2xl font-semibold">My Assignments</h1>
+        <h1 class="md:text-2xl text-xl font-semibold">My Assignments</h1>
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 :text-gray-400 mt-3">
                 <tbody>
                     @foreach ($assignments as $assignment)
                     <tr class="bg-gray-100 border-b hover:bg-violet-200 :border-gray-700" onclick="location.href='{{ route('assignment.studentShow', ['assignment' => $assignment->id]) }}'">
-                        <th scope="row" class="pr-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white px-2">
+                        <th scope="row" class="md:pr-6 pr-2 md:py-4 py-1 font-bold text-base text-gray-900 whitespace-nowrap :text-white px-2">
                             {{ $loop->iteration }} <br>
                         </th>
                         <th scope="row" class="px-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
                             {{ $assignment->title }} <br>
                         </th>
-                        <td class="px-6 py-4 text-center">
+                        <td class="md:px-6 px-16 py-4 text-center whitespace-nowrap px-3 font-medium">
                             @php
                                 $deadline = \Carbon\Carbon::parse($assignment->deadline);
                                 $formattedDeadline = $deadline->format('j F Y | H:i T');

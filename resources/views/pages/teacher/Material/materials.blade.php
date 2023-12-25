@@ -4,9 +4,14 @@
 <div class="welcome-text main flex justify-between">
     <h1 class="text-2xl font-semibold">Your Course Materials</span></h1>
     <div class="text-right flex">
-        <h1 class="text-base opacity-70 font-medium self-center">Senin, 15 Desember 2023</h1>
-        <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900" name="chevron-back-outline"></ion-icon>
-        <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900" name="chevron-forward-outline"></ion-icon>
+        @php
+            $timezone = new DateTimeZone('Asia/Jakarta');
+            $date = new DateTime('now', $timezone);
+            $formattedDate = $date->format('l, d F Y ');
+        @endphp
+        <h1 class="text-base opacity-70 font-medium self-center md:block hidden">{{ $formattedDate }}</h1>
+        <ion-icon onclick="history.back()" class="self-center text-xl ml-5 text-violet-900 md:block hidden" name="chevron-back-outline"></ion-icon>
+        <ion-icon onclick="history.forward()" class="self-center text-xl ml-2 text-violet-900 md:block hidden" name="chevron-forward-outline"></ion-icon>
     </div>
 </div>
 
@@ -46,19 +51,19 @@
                 @endphp
             <tr class="bg-gray-100 border-b hover:bg-gray-300 :border-gray-700">
                 <td class="px-2 py-4">
-                    <i class="fa-solid {{ App\Helpers\FileHelper::getFileIconClass(pathinfo($material->file_path, PATHINFO_EXTENSION)) }} text-{{ $randomColor }} text-base self-center mr-2 shadow"></i>
+                    <i class="fa-solid {{ App\Helpers\FileHelper::getFileIconClass(pathinfo($material->file_path, PATHINFO_EXTENSION)) }} text-{{ $randomColor }} md:text-base text-xs self-center mr-2 shadow"></i>
                 </td>
                 <th scope="row" class="px-3 py-4 font-medium capitalize text-gray-900 whitespace-nowrap :text-white">
-                    <h2 class="text-base">{{ $material->title }}</h2>
+                    <h2 class="md:text-base text-sm">{{ $material->title }}</h2>
                 </th>
                 <td class="text-left py-4 cursor-pointer" onclick="window.open('{{ asset('materials/' . $material->file_path) }}', '_blank');">
-                    <h3 class="text-blue-800 hover:text-blue-500 font-bold text-base">{{ $material->file_path }}</h3>
+                    <h3 class="text-blue-800 hover:text-blue-500 font-bold md:text-base text-sm">{{ $material->file_path }}</h3>
                 </td>
-                <td class="action text-center py-4 flex justify-center">
+                <td class="action text-center px-4 py-4 flex justify-center">
                     <a href="{{ asset('materials/' . $material->file_path) }}" download>
-                        <i class="fa-solid fa-download text-base text-white hover:text-gray-300 p-2 mx-1 bg-green-700 rounded"></i>
+                        <i class="fa-solid fa-download md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-green-700 rounded"></i>
                     </a>
-                    <i class="fa-solid fa-pencil text-base text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='/teacher/materials/{{ $material->id }}/edit'"></i>
+                    <i class="fa-solid fa-pencil md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='/teacher/materials/{{ $material->id }}/edit'"></i>
 
                     <form class="deleteMaterial" action="{{ route('materials.delete', ['material' => $material->id]) }}" method="post">
                         @csrf
@@ -66,7 +71,7 @@
                         <input type="hidden" name="id" value="{{ $material->id }}">
                         <input type="hidden" name="course_id" value="{{ $material->course->id }}">
                         <button type="button" class="attribute" onclick="confirmLeave(this)">
-                            <i class="fa-solid fa-trash text-base text-white hover:text-gray-300 p-2 mx-1 bg-red-500 rounded"></i>
+                            <i class="fa-solid fa-trash md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-red-500 rounded"></i>
                         </button>
                         
                     </form>
@@ -76,12 +81,12 @@
                         $date = \Carbon\Carbon::parse($material->created_at);
                         $formattedDate = $date->format('j F Y | H:i T');
                     @endphp
-                    <h3 class="text-black font-medium text-base">{{ $formattedDate }}</h3>
+                    <h3 class="text-black font-medium md:text-base text-sm whitespace-nowrap">{{ $formattedDate }}</h3>
                 </td>
             </tr>
             @empty
             <tr>
-                <td colspan="5" class="text-center py-4 text-gray-500 font-semibold text-base">No materials available.</td>
+                <td colspan="5" class="text-center py-4 text-gray-500 font-semibold text-base ">No materials available.</td>
             </tr>
             @endforelse
 

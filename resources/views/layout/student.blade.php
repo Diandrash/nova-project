@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Nova Project | Student Page</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {{-- <link rel="stylesheet" href="/css/main.css"> --}}
         {{-- <link rel="stylesheet" href="/css/animate.css"> --}}
         <link rel="stylesheet" href="{{ asset('css/viewer.css') }}">
@@ -16,7 +17,7 @@
             <div class="sidebar-area w-2/12 flex justify-center ">
                 @include('layout.sidebarStudent')
             </div>
-            <div class="main-area mt-7 w-10/12 mr-4 pb-10">
+            <div class="main-area mt-7 w-10/12 md:mr-4 mr-2 md:ml-0 ml-5 pb-10">
                 @yield('container')
             </div>
         </div>
