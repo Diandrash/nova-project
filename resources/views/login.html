@@ -21,10 +21,10 @@
         </button>
       </div>
       <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-        <li><a class="text-base text-white hover:text-gray-300 font-semibold" href="/home#hero">Home</a></li>
-        <li><a class="text-base text-white hover:text-gray-300 font-semibold" href="/home#about">About Us</a></li>
-        <li><a class="text-base text-white hover:text-gray-300 font-semibold" href="/home#features">Services</a></li>
-        <li><a class="text-base text-white hover:text-gray-300 font-semibold" href="/home#footer">Contact</a></li>
+        <li><a class="text-base text-white hover:text-gray-300 font-semibold" href="#hero">Home</a></li>
+        <li><a class="text-base text-white hover:text-gray-300 font-semibold" href="#about">About Us</a></li>
+        <li><a class="text-base text-white hover:text-gray-300 font-semibold" href="#features">Services</a></li>
+        <li><a class="text-base text-white hover:text-gray-300 font-semibold" href="#footer">Contact</a></li>
       </ul>
       <a class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-purple-50 hover:bg-purple-100 text-base text-purple-900 font-bold  rounded-xl transition duration-200" href="/login">Sign In</a>
       <a class="hidden lg:inline-block py-2 px-6 bg-amber-500 hover:bg-amber-600 text-base text-black font-bold rounded-xl transition duration-200" href="#">Sign up</a>
@@ -33,7 +33,7 @@
       <div class="navbar-backdrop fixed inset-0 opacity-25"></div>
       <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-purple-600 border-r overflow-y-auto">
         <div class="flex items-center mb-8">
-          <a class="mr-auto text-xl font-bold leading-none text-white" href="/home">
+          <a class="mr-auto text-xl font-bold leading-none text-white" href="#">
             <h1 class="text-white">Nova E-Learning</h1>
           </a>
           <button class="navbar-close">
@@ -45,18 +45,18 @@
         <div>
           <ul>
             <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="/home#hero">Home</a>
+              <a class="block p-4 text-sm font-semibold text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="#hero">Home</a>
             </li>
             <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="/home#about">About Us</a>
+              <a class="block p-4 text-sm font-semibold text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="#about">About Us</a>
             </li>
             <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="/home#features">Services</a>
+              <a class="block p-4 text-sm font-semibold text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="#features">Services</a>
             </li>
             <li class="mb-1">
             </li>
             <li class="mb-1">
-              <a class="block p-4 text-sm font-semibold text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="/home#footer">Contact</a>
+              <a class="block p-4 text-sm font-semibold text-white hover:bg-blue-50 hover:text-blue-600 rounded" href="#footer">Contact</a>
             </li>
           </ul>
         </div>
@@ -76,22 +76,21 @@
   <div class="register mt-16" id="register">
     <div class="content-area flex flex-wrap">
         <div class="image-area md:flex hidden justify-center md:w-5/12 w-full bg-violet-400">
-            <img class="w-8/12 mt-5" src="{{ asset('img/loginPeople.png') }}" alt="">
+            <img class="w-8/12 mt-5" src="/public/img/LoginPeople.png" alt="">
         </div>
         <div class="input-area md:w-7/12 w-full md:bg-white bg-violet-300">
             <div class="content-area mx-10 my-10">
                 <h1 class="text-3xl font-bold">Sign into your Account</h1>
                 <p class="text-base mt-1">Many great things await you.</p>
                 
-                <form action="/login" method="POST" class="md:w-10/12 w-full mt-8">
-                    @csrf
+                <form action="" class="md:w-10/12 w-full mt-8">
                     <div class="mb-6">
-                        <label for="large-input" class="block mb-2 text-base font-medium text-gray-500">Email</label>
-                        <input type="text" id="large-input" name="email" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" placeholder="Johndoe@smk.belajar.id" required>
+                        <label for="large-input" class="block mb-2 text-base font-medium text-gray-500">Fullname</label>
+                        <input type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" placeholder="John Doe" required>
                     </div>
                     <div class="mb-6">
                         <label for="large-input" class="block mb-2 text-base font-medium text-gray-500">Password</label>
-                        <input type="password" id="large-input" name="password" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" placeholder="">
+                        <input type="password" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500" placeholder="">
                     </div>
 
                     <button type="submit" class="py-4 w-full px-5 bg-amber-500 hover:bg-amber-700 text-white font-bold text-xl mt-5 mb-5 rounded-full" onclick="location.href=''">

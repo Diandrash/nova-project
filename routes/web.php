@@ -26,8 +26,6 @@ Route::get('/', function () {
 
 
 Route::get('/register', [RegisterController::class, 'index']);
-Route::get('/register/teacher', [RegisterController::class, 'teacher']);
-Route::get('/register/student', [RegisterController::class, 'student']);
 
 Route::post('/register', [RegisterController::class, 'regist']);
 

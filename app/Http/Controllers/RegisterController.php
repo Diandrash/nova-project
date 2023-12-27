@@ -8,19 +8,12 @@ use App\Models\User;
 class RegisterController extends Controller
 {
     function index () {
-        return view('login.choose_role');
-    }
-
-    function teacher () {
-        return view('login.register_teacher');
-    }
-    
-    function student () {
-        return view('login.register_student');
+        return view('login.register');
     }
 
     function regist (Request $request) {
-        // return @dd($request);
+
+        // return $request;// return @dd($request);
         $ValidatedData = $request->validate([
             'fullname' => 'required|min:3|max:255',
             'email' => 'required|min:3|unique:users',
