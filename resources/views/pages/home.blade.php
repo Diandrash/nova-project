@@ -84,7 +84,7 @@
       <div class="text-content md:mt-16 mt-0 md:w-6/12 w-full">
         <h3 class="text-base font-medium text-purple-700 uppercase">Modern E-Learning</h3>
         <p class="font-bold md:text-4xl text-2xl mt-3">
-          Belajar Bertransformasi, Masa depan dalam genggaman anda
+          Embrace Transformation, The Future in Your Hands
         </p>
         <p class="font-semibold md:text-xl text-sm mt-3 opacity-55">
           Online learning is valuable tool for children's education it's important to approach it with a thoughtful mindset
@@ -105,7 +105,7 @@
       </div>
       <div class="text-area mt-5 md:w-6/12 w-auto">
         <h2 class="md:text-4xl text-3xl font-semibold md:text-left text-center">About Us</h2>
-        <p class="mt-3 text-left">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque soluta ex unde inventore fugiat expedita delectus eius placeat repellat odio. Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, repellendus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque soluta, qui excepturi magnam aut in distinctio asperiores voluptas! Facere, sit! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi temporibus doloremque odit magnam aspernatur nobis blanditiis nostrum. Dignissimos atque molestiae deleniti velit nulla ex numquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, reprehenderit.</p>
+        <p class="mt-3 text-left">Welcome to our innovative e-learning platform! Developed by Group 4 from SMK Negeri 2 Klaten, our project revolutionizes the teaching and learning experience. We address the limitations of traditional classroom settings, offering anytime, anywhere access to educational materials. Our user-friendly platform empowers both students and teachers, enabling seamless assignment distribution and assessment. Specifically designed for the Software as a Service (SaaS) curriculum in the Information Technology department, our project embodies flexibility and efficiency in education. Join us on this journey to revolutionize teaching and learning experience.</p>
       </div>
     </div>
   </section>
@@ -143,8 +143,8 @@
   <section class="footer z-10 mt-16 mb-16 h-72 border-t-2 border-purple-200" id="footer">
     <div class="big-area pt-16 sm:mx-16 mx-8  h-full flex justify-between flex-wrap">
         <div class="logo-area w-96">
-            <img class="w-32" src="{{ asset('img/logoremove.png') }}" alt="">
-            <h1 class="text-xl font-semibold opacity-70 mt-3">Bimbel online interaktif pertama di Indonesia</h1>
+            <img class="w-64 " src="{{ asset('img/logolandscape.png') }}" alt="">
+            <h1 class="text-xl font-semibold opacity-70 mt-6">Nova E-Learning Web Apps</h1>
         </div>
 
         <div class="text-area lg:mt-0 md:mt-5 mt-5 flex flex-wrap sm:justify-between justify-between pb-10 " style="width: 46rem;">
@@ -152,7 +152,7 @@
             <div class="col-1 sm:mt-0 mt-3 w-32">
                 <h2 class="font-bold text-base uppercase opacity-50">Developer</h2>
 
-                <div class="flex flex-col md:mt-6 mt-14 h-40 justify-between text-sm font-medium ">
+                <div class="flex flex-col md:mt-6 mt-7 h-40 justify-between text-sm font-medium ">
                     <h3>Diandra Farel</h3>
                     <h3>Muhammad Tamzis</h3>
                     <h3>Andri Bayu</h3>
@@ -163,7 +163,7 @@
             <div class="col-2 lg:ml-10 md:ml-0 ml-0 sm:mt-0 mt-3 md:mr-0 mr-16">
                 <h2 class="font-bold text-base uppercase opacity-50">Sosmed</h2>
 
-                <div class="flex flex-col mt-14  md:mt-8 h-40 justify-between text-sm font-medium ">
+                <div class="flex flex-col mt-7  md:mt-8 h-40 justify-between text-sm font-medium ">
                     <h3 class="text-black hover:text-blue-300 pointer" onclick="location.href='https://www.instagram.com/diandraafs_?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=='">@diandraafs_</h3>
                     <h3 class="text-black hover:text-blue-300 pointer" onclick="location.href='https://www.instagram.com/tznvn?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=='">@tznvn_</h3>
                     <h3 class="text-black hover:text-blue-300 pointer" onclick="location.href='https://www.instagram.com/andrby_?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=='">@andrby_</h3>
@@ -175,7 +175,7 @@
 
                 <h2 class="font-bold text-base uppercase opacity-50">Tentang Kami</h2>
 
-                <div class="flex flex-col md:mt-6 mt-14 h-40 justify-between text-sm font-medium ">
+                <div class="flex flex-col md:mt-6 mt-7 h-40 justify-between text-sm font-medium ">
                     <h3>Home</h3>
                     <h3>About Us</h3>
                     <h3>Contact</h3>
