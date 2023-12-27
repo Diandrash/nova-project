@@ -19,7 +19,7 @@
 
     </div>
 
-    <div class="course-cards flex flex-wrap justify-start gap-5">
+    <div class="course-cards flex flex-wrap justify-start gap-5" data-aos="fade-left">
         @forelse ($courses as $index => $course)
             @php
                 $icons = ['fan', 'sun', 'star', 'cloud', 'bolt', 'snowflake'];
@@ -48,7 +48,7 @@
             </div>   
             
         @empty
-        <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-transparent hover:bg-gray-200 border-2 border-amber-500 border-dashed cursor-pointer" onclick="location.href='{{ route('courses.join') }}'">
+        <div class="card w-60 h-80 rounded-3xl shadow-xl mt-5 bg-transparent hover:bg-gray-200 border-2 border-amber-500 border-dashed cursor-pointer" onclick="location.href='{{ route('courses.join') }}'" >
             <div class="content flex flex-col items-center justify-center pb-8 h-full">
                 <div class="relative inline-flex items-center justify-center w-12 mt-3 h-12  overflow-hidden rounded-full ">
                     <i class="fa-solid fa-plus text-5xl text-amber-500"></i>
@@ -64,7 +64,7 @@
 
     </div>
 
-    <div class="assignments-cards mt-10">
+    <div class="assignments-cards mt-10" data-aos="fade-up">
         <h1 class="md:text-2xl text-xl font-semibold">My Assignments</h1>
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 :text-gray-400 mt-3">
@@ -86,9 +86,16 @@
                                 {{ $formattedDeadline }}
                             </span>
                         </td>
-                        <th scope="row" class="px-6 py-4 font-bold text-base text-green-500 whitespace-nowrap :text-white">
+                        @if ($assignment->pivot->mark)
+                        <th scope="row" class="px-6 py-4 font-bold text-left text-base text-green-500 whitespace-nowrap :text-white">
                             {{ $assignment->pivot->mark }}/100 <br>
                         </th>
+                        @endif
+                        @if (!$assignment->pivot->mark)
+                        <th scope="row" class="px-6 py-4 font-bold text-base whitespace-nowrap :text-white">
+                            -<br>
+                        </th>
+                        @endif
                         <td class="px-6 py-4 text-center    ">
                             @if ($assignment->pivot->status == 1)
                                 <button type="button" class="text-green-600 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-1 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Has Completed</button>

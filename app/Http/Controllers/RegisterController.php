@@ -8,7 +8,7 @@ use App\Models\User;
 class RegisterController extends Controller
 {
     function index () {
-        return view('login.register');
+        return view('auth.register');
     }
 
     function regist (Request $request) {

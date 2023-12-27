@@ -4,12 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Nova Project | Student Page</title>
+        <title>Nova E-Learning | Student Page</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         {{-- <link rel="stylesheet" href="/css/main.css"> --}}
         {{-- <link rel="stylesheet" href="/css/animate.css"> --}}
         <link rel="stylesheet" href="{{ asset('css/viewer.css') }}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     </head>
     <body class="bg-gray-100">
         @include('sweetalert::alert')
@@ -45,6 +46,9 @@
             }
 
         </script>
-        
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+          </script>
     </body>
     </html>

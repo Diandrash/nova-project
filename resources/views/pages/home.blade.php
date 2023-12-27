@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
+  <title>Nova E-Learning | Home Page</title>
 </head>
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
@@ -67,8 +68,8 @@
         </div>
         <div class="mt-auto">
           <div class="pt-6">
-            <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
-            <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
+            <a class="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="/login">Sign in</a>
+            <a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="/register">Sign Up</a>
           </div>
           <p class="my-4 text-xs text-center text-gray-400">
             <span>Copyright © 2023</span>
@@ -78,8 +79,8 @@
     </div>
   </div>
 
-  <section class="hero mt-24 z-10" id="hero" data-aos="fade-up-left" data-aos-duration="1000" data-aos-easing="linear">
-    <div class="content-area flex justify-between flex-wrap mx-16">
+  <section class="hero  z-10" id="hero" data-aos="fade-up-left" data-aos-duration="1000" data-aos-easing="linear">
+    <div class="content-area mt-24 flex justify-between flex-wrap mx-16">
       <div class="text-content md:mt-16 mt-0 md:w-6/12 w-full">
         <h3 class="text-base font-medium text-purple-700 uppercase">Modern E-Learning</h3>
         <p class="font-bold md:text-4xl text-2xl mt-3">
@@ -89,7 +90,7 @@
           Online learning is valuable tool for children's education it's important to approach it with a thoughtful mindset
         </p>
 
-        <button class="px-16 py-3 md:text-base text-sm bg-amber-300 font-bold mt-6 rounded-full">Sign Up</button>
+        <button class="px-16 py-3 md:text-base text-sm bg-amber-300 hover:bg-amber-500 font-bold mt-6 rounded-full" onclick="location.href='/login'">Join Now</button>
       </div>
       <div class="image-content md:w-5/12 w-full">
         <img src="{{ asset('img/3.png') }}" alt="">
@@ -97,8 +98,8 @@
     </div>
   </section>
 
-  <section class="about z-10 md:mt-10 mt-24 pb-24" id="about" data-aos="flip-left" data-aos-duration="500">
-    <div class="content-area flex flex-wrap md:justify-evenly justify-center md:mx-24 mx-10">
+  <section class="about z-10 pb-24" id="about" data-aos="flip-left" data-aos-duration="500">
+    <div class="content-area md:mt-10 mt-24 flex flex-wrap md:justify-evenly justify-center md:mx-24 mx-10">
       <div class="image-area md:w-3/12 w-8/12">
         <img src="{{ asset('img/logoremove.png') }}" alt="">
       </div>
@@ -109,8 +110,8 @@
     </div>
   </section>
 
-  <section id="features" class="z-10 features mt-10 pb-10" data-aos="zoom-in-up" data-aos-duration="600">
-    <div class="content-area flex flex-wrap justify-between md:mx-24 mx-14">
+  <section id="features" class="z-10 features  pb-10" data-aos="zoom-in-up" data-aos-duration="600">
+    <div class="content-area mt-10 flex flex-wrap justify-between md:mx-24 mx-14">
       <div class="text-left md:w-6/12 w-full md:ml-10 ml-0">
         <h1 class="md:text-4xl text-2xl font-bold">Our <span class="text-purple-700">Online Teaching Platform</span> Enable the Students to</h1>
         <div class="feature lists mt-4">

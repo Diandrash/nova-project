@@ -15,7 +15,9 @@
         </div>
     </div>
 
-    <div class="courses-cards bg-red-40 flex flex-wrap justify-start gap-5 mt-7 ">
+    <div class="courses-cards bg-red-40 flex flex-wrap justify-start gap-5 mt-7" data-aos="fade-up"
+    data-aos-easing="linear"
+    data-aos-duration="1000">
 
         <div class="join-card course-card md:w-80 w-96 h-48 px-1 md:mb-2 mb-1">
             <div class="card rounded-2xl border-dashed border-2 border-violet-300 hover:border-violet-700 flex flex-col justify-center items-center py-14 bg-gray-100 hover:bg-gray-200" onclick="location.href='{{ route('courses.join') }}'">

@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class LoginController extends Controller
 {
     function index () {
-        return view('partials.login');
+        return view('auth.login');
     }
 
     public function auth (Request $request) {
@@ -41,6 +41,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+        Alert::success('Success', 'Logout Succes');
         return redirect('/')->with('logout', 'logout');
     }
 }

@@ -24,16 +24,13 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-
-Route::get('/register', [RegisterController::class, 'index']);
-
-Route::post('/register', [RegisterController::class, 'regist']);
-
-
-Route::get('/login', function () {
-    return view('login.login');
+Route::get('/home', function(){
+    return view('pages.home');
 });
 
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'regist']);
+Route::get('/login', [LoginController::class, 'index']);
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::post('/login', [LoginController::class, 'auth']);
 
@@ -42,14 +39,6 @@ Route::get('/student/courses/inputCode', function () {
     return 2;
 });
 
-
-// Route::get('/home', function(){
-    //     return view('home');
-    // })->middleware(['auth', 'role_id:1']);
-    
-    Route::get('/home', function(){
-        return view('pages.home');
-    });
     
 Route::get('/student', [CourseController::class, 'homeStudentIndex']);
 Route::get('/student/courses', [CourseController::class, 'studentIndex']);
@@ -67,6 +56,8 @@ Route::get('/student/assignments/showAssignments/{assignment}', [AssignmentContr
 Route::put('/student/assignments/showAssignments/{assignment}/{submission}', [SubmissionController::class, 'studentUpdate'])->name('assignment.studentUpdate');
 
 Route::get('/student/materials', [MaterialController::class, 'indexStudent'])->name('materials.indexStudent');
+
+
 
 
 

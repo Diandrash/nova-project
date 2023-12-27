@@ -19,7 +19,7 @@
 
     </div>
 
-    <div class="course-cards flex flex-wrap justify-start gap-5">
+    <div class="course-cards flex flex-wrap justify-start gap-5" data-aos="fade-left">
         @forelse ($courses as $index => $course)
             @php
                 $icons = ['fan', 'sun', 'star', 'cloud', 'bolt', 'snowflake'];
@@ -64,7 +64,7 @@
 
     </div>
 
-    <div class="assignments-cards md:mt-10 mt-5">
+    <div class="assignments-cards md:mt-10 mt-5" data-aos="fade-up">
         <h1 class="md:text-2xl text-xl font-semibold">My Assignments</h1>
         <div class="relative overflow-x-auto">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 :text-gray-400 mt-3">

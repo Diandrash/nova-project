@@ -16,7 +16,9 @@
     </div>
 
 
-    <div class="table-assignments relative overflow-x-auto mt-2">
+    <div class="table-assignments relative overflow-x-auto mt-2" data-aos="fade-right"
+    data-aos-easing="linear"
+    data-aos-duration="1500">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 :text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-100 :bg-gray-700 :text-gray-400">
                 <tr>

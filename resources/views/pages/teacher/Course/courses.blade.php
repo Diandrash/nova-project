@@ -15,7 +15,9 @@
         </div>
     </div>
 
-    <div class="courses-cards flex flex-wrap justify-start md:gap-5 gap-2 mt-7 ">
+    <div class="courses-cards flex flex-wrap justify-start md:gap-5 gap-2 mt-7 " data-aos="fade-down"
+    data-aos-easing="linear"
+    data-aos-duration="1000">
 
         <div class="join-card course-card md:w-80 w-full h-48 px-1 mb-2 ">
             <div class="card rounded-2xl border-dashed border-2 border-violet-300 hover:border-violet-700 flex flex-col justify-center items-center py-14 bg-gray-100 hover:bg-gray-200" onclick="location.href='/teacher/courses/create'">
