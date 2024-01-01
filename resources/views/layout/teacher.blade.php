@@ -21,6 +21,7 @@
                 height: 100%;
             }
         }
+        </style>
     </head>
     <body class="bg-gray-100">
         @include('sweetalert::alert')
