@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Nova E-Learning | Student Page</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('icons/style.css') }}">
         {{-- <link rel="stylesheet" href="/css/main.css"> --}}
         {{-- <link rel="stylesheet" href="/css/animate.css"> --}}
         <link rel="stylesheet" href="{{ asset('css/viewer.css') }}">

@@ -1,0 +1,10 @@
+.sidebar-student, .sidebar-teacher {
+    height: 35rem;
+    background-color: #7537D8;
+}
+
+@media only screen and (max-width: 600px) {
+    .sidebar-student, .sidebar-teacher {
+        height: 100%;
+    }
+  }

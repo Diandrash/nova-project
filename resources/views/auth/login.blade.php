@@ -77,7 +77,7 @@
   <div class="register mt-16" id="register">
     <div class="content-area flex flex-wrap">
         <div class="image-area md:flex hidden justify-center md:w-5/12 w-full bg-violet-400">
-            <img class="w-8/12 mt-5" src="{{ asset('img/loginPeople.png') }}" alt="">
+            <img class="w-8/12 mt-5" src="{{ asset('img/LoginPeople.png') }}" alt="">
         </div>
         <div class="input-area md:w-7/12 w-full md:bg-white bg-violet-300">
             <div class="content-area mx-10 my-10">
@@ -99,7 +99,7 @@
                         Sign In
                     </button>
 
-                    <h1 class="mt-3">Not Have an Account? <a href="register.html" class="text-blue-500 underline pointer">Register Now</a></h1>
+                    <h1 class="mt-3">Not Have an Account? <a href="/register" class="text-blue-500 underline pointer">Register Now</a></h1>
                 </form>
             </div>
         </div>
