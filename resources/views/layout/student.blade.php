@@ -6,7 +6,18 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Nova E-Learning | Student Page</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="{{ asset('icons/style.css') }}">
+        <style>
+                .sidebar-student, .sidebar-teacher {
+                height: 35rem;
+                background-color: #7537D8;
+            }
+
+            @media only screen and (max-width: 600px) {
+                .sidebar-student, .sidebar-teacher {
+                    height: 100%;
+                }
+            }
+        </style>
         {{-- <link rel="stylesheet" href="/css/main.css"> --}}
         {{-- <link rel="stylesheet" href="/css/animate.css"> --}}
         <link rel="stylesheet" href="{{ asset('css/viewer.css') }}">

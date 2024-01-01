@@ -29,7 +29,7 @@ class AssignmentController extends Controller
     // Ambil semua assignments yang dimiliki oleh pengguna pada course tertentu
     $assignments = $user->assignments()->where('course_id', $course_id)->get();
 
-    return view('pages.student.assignment.index', [
+    return view('pages.student.Assignment.index', [
         "assignments" => $assignments,
         "course_id" => $course_id
     ]);
@@ -41,7 +41,7 @@ class AssignmentController extends Controller
         $user = User::find($userId);
         $assignments = $user->assignments;
 
-        return view('pages.student.assignment.assignments', [
+        return view('pages.student.Assignment.assignments', [
             'assignments' => $assignments
         ]);
     }
@@ -55,7 +55,7 @@ class AssignmentController extends Controller
         $assignments = Assignment::assignmentsByInstructor($instructorId);
     
         // Tampilkan data assignments ke view atau lakukan sesuai kebutuhan
-        return view('pages.teacher.assignment.assignmentsAll', compact('assignments'));
+        return view('pages.teacher.Assignment.assignmentsAll', compact('assignments'));
     }
     
 
@@ -64,7 +64,7 @@ class AssignmentController extends Controller
     $courseId = request()->input('courseId');
     $course = Course::where('id' , $courseId)->first();
     $assignments = Assignment::where('course_id', $courseId)->get();
-    return view('pages.teacher.assignment.assignments', [
+    return view('pages.teacher.Assignment.assignments', [
         'assignments'=> $assignments,
         'course' => $course,
     ]);
@@ -79,7 +79,7 @@ class AssignmentController extends Controller
         // return 1;
         $courseId = request()->input('courseId');
         $course = Course::where('id' , $courseId)->first();
-        return view('pages.teacher.assignment.create', [
+        return view('pages.teacher.Assignment.create', [
             "course" => $course,
         ]);
     }
@@ -148,7 +148,7 @@ class AssignmentController extends Controller
         // return 1;
         // dd($assignment);
         $assignment = Assignment::find($id);
-        return view('pages.teacher.assignment.index', [
+        return view('pages.teacher.Assignment.index', [
             "assignment" => $assignment
         ]);
     }
@@ -161,7 +161,7 @@ class AssignmentController extends Controller
 
         $userId = auth()->user()->id;
         $submission = Submission::where('user_id', $userId)->where('assignment_id', $assignmentId)->first();
-        return view('pages.student.assignment.index', [
+        return view('pages.student.Assignment.index', [
             "assignment" => $assignment,
             "submission" => $submission  
         ]);
@@ -174,7 +174,7 @@ class AssignmentController extends Controller
         $courseId = request()->input('courseId');
         $course = Course::where('id', $courseId)->first();
         // return 1;
-        return view('pages.teacher.assignment.edit', [
+        return view('pages.teacher.Assignment.edit', [
             "assignment" => $assignment,
             "course" => $course,
         ]);

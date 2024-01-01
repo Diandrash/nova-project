@@ -22,7 +22,7 @@ class CourseController extends Controller
         $userId = auth()->user()->id;
         $user = User::find($userId);
         $courseInUser = $user->courses->all();
-        return view('pages.student.course.courses', [
+        return view('pages.student.Course.courses', [
             "courses" => $courseInUser
         ]);
     }
@@ -57,7 +57,7 @@ class CourseController extends Controller
         $instructorId = auth()->user()->id;
         $courses = Course::where('instructor_id', $instructorId)->get();
 
-        return view('pages.teacher.course.courses', [
+        return view('pages.teacher.Course.courses', [
             "courses" => $courses
         ]);
     }
@@ -68,7 +68,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('pages.teacher.course.create');
+        return view('pages.teacher.Course.create');
         // return view('layout.index');
     }
 
@@ -119,14 +119,14 @@ class CourseController extends Controller
      */
     public function studentShow(Course $course)
     {
-        return view('pages.student.course.index', [
+        return view('pages.student.Course.index', [
             "course" => $course
         ]);
     }
     public function teacherShow(Course $course)
     {
         // dd($course);
-        return view('pages.teacher.course.index', [
+        return view('pages.teacher.Course.index', [
             "course" => $course
         ]);
     }
@@ -151,7 +151,7 @@ class CourseController extends Controller
         $userInCourse = $course->users->all();
         
 
-        return view('pages.student.course.members', [
+        return view('pages.student.Course.members', [
             "users" => $userInCourse,
             "course" => $course
         ]);
@@ -164,7 +164,7 @@ class CourseController extends Controller
         $userInCourse = $course->users->all();
         
 
-        return view('pages.teacher.course.members', [
+        return view('pages.teacher.Course.members', [
             "users" => $userInCourse,
             "course" => $course
         ]);
@@ -181,7 +181,7 @@ class CourseController extends Controller
         // Ambil semua assignments yang dimiliki oleh pengguna untuk course tertentu
         $assignments = $user->assignments()->where('course_id', $course_id)->get();
 
-        return view('pages.student.assignment.assignments', [
+        return view('pages.student.Assignment.assignments', [
             "assignments" => $assignments,
             "course_id" => $course_id
         ]);
@@ -196,7 +196,7 @@ class CourseController extends Controller
         $digits = array_map('intval', str_split($courseCode));
     
         // Mengembalikan view dengan data yang diperlukan
-        return view('pages.teacher.course.code', [
+        return view('pages.teacher.Course.code', [
             "course" => $course,
             "digits" => $digits,
         ]);
@@ -208,7 +208,7 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
-        return view('pages.teacher.course.edit', [
+        return view('pages.teacher.Course.edit', [
             "course" => $course
         ]);
     }

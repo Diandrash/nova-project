@@ -21,7 +21,7 @@ class MaterialController extends Controller
         $course = Course::find($courseId);
         $materials = Material::where('course_id', $courseId)->get();
 
-        return view('pages.teacher.material.materials', [
+        return view('pages.teacher.Material.materials', [
             "materials" => $materials,
             "course" => $course,
         ]);
@@ -32,14 +32,14 @@ class MaterialController extends Controller
         // return $courseId;
         $materials = Material::where('course_id', $courseId)->get();
 
-        return view('pages.student.material.materials', [
+        return view('pages.student.Material.materials', [
             "materials" => $materials
         ]);
     }
 
     public function create()
     {
-        return view('pages.teacher.material.create');
+        return view('pages.teacher.Material.create');
     }
 
     public function store(StoreMaterialRequest $request)
@@ -80,7 +80,7 @@ class MaterialController extends Controller
     public function edit($id)
     {
         $material = Material::findOrFail($id);
-        return view('pages.teacher.material.edit', compact('material'));
+        return view('pages.teacher.Material.edit', compact('material'));
     }
 
     public function update(UpdateMaterialRequest $request, $id)

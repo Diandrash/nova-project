@@ -10,7 +10,17 @@
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
         <link rel="stylesheet" href="{{ asset('css/viewer.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <style>
+            .sidebar-student, .sidebar-teacher {
+            height: 35rem;
+            background-color: #7537D8;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .sidebar-student, .sidebar-teacher {
+                height: 100%;
+            }
+        }
     </head>
     <body class="bg-gray-100">
         @include('sweetalert::alert')

@@ -24,7 +24,7 @@ class SubmissionController extends Controller
         $courseId = $assignment->course->id;
         $course = Course::find($courseId);
         // return dd($submissions);
-        return view('pages.teacher.submission.index', [
+        return view('pages.teacher.Submission.index', [
             "submissions" => $submissions,
             "course" => $course,
             "assignment" => $assignment,

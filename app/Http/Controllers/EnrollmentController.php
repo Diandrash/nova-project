@@ -16,7 +16,7 @@ class EnrollmentController extends Controller
     public function index()
     {
         // return 1;
-        return view('pages.student.course.join');
+        return view('pages.student.Course.join');
     }
 
     /**
@@ -155,7 +155,7 @@ class EnrollmentController extends Controller
         }
 
         // Jika ada data course yang cocok, tampilkan tampilan hasil
-        return view('pages.student.course.result', [
+        return view('pages.student.Course.result', [
             "courses" => $courses
         ]);
     }
