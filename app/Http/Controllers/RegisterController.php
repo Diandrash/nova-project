@@ -11,7 +11,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    function regist (Request $request) {
+    public function regist (Request $request) {
 
         // return $request;// return @dd($request);
         $ValidatedData = $request->validate([
