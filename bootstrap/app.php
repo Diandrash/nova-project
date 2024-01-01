@@ -41,6 +41,9 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+// Set batas maksimum listener untuk EventEmitter
+ini_set('default_socket_timeout', 15);
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

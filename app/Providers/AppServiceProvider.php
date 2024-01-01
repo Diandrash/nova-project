@@ -1,4 +1,5 @@
 <?php
+// File: App\Providers\AppServiceProvider.php
 
 namespace App\Providers;
 
@@ -11,7 +12,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Set batas maksimum listener untuk EventEmitter
+        ini_set('default_socket_timeout', 15);
     }
 
     /**
@@ -22,3 +24,4 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 }
+

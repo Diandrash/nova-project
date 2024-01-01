@@ -117,25 +117,25 @@
         <div class="feature lists mt-4">
 
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('icons/vector.svg') }}" alt="">
+            <img class="w-8" src="{{ asset('icons/Vector.svg') }}" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Provide basic consepts</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('icons/vector.svg') }}" alt="">
+            <img class="w-8" src="{{ asset('icons/Vector.svg') }}" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Solve complicated sums</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('icons/vector.svg') }}" alt="">
+            <img class="w-8" src="{{ asset('icons/Vector.svg') }}" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Understand difficult topics</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('icons/vector.svg') }}" alt="">
+            <img class="w-8" src="{{ asset('icons/Vector.svg') }}" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Interact with the teachers</h1>
           </div>
         </div>
       </div>
       <div class="image-content md:w-3/12 w-9/12 md:mr-16 mr-0 md:mt-0 mt-5">
-        <img class="" src="{{ asset('img/loginPeople.png') }}" alt="">
+        <img class="" src="{{ asset('img/LoginPeople.png') }}" alt="">
       </div>
     </div>
   </section>
