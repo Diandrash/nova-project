@@ -53,7 +53,7 @@
             Course Description :
         </h1>
 
-        <p class="mt-1 font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis ex iure obcaecati? Cumque nesciunt perspiciatis dolores? Alias ab itaque unde. Lorem ipsum dolor sit amet consectetur adipisicing elit. A, deserunt eveniet ipsam ex numquam consequatur consequuntur reprehenderit est aut repellat corrupti explicabo, vel quisquam aperiam eum? Expedita cumque praesentium consectetur?</p>
+        <p class="mt-1 font-normal">{!! $course->description !!}</p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

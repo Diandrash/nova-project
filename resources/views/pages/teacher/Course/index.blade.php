@@ -63,7 +63,7 @@
             Course Description :
         </h1>
 
-        <p class="mt-1 font-normal">{{ $course->description }}</p>
+        <p class="mt-1 font-normal">{!! $course->description !!}</p>
     </div>
 
     <script>
