@@ -74,7 +74,7 @@
                         <th scope="row" class="md:pr-6 pr-2 md:py-4 py-1 font-bold text-base text-gray-900 whitespace-nowrap :text-white px-2">
                             {{ $loop->iteration }} <br>
                         </th>
-                        <th scope="row" class="px-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white">
+                        <th scope="row" class="px-6 py-4 font-bold text-base text-gray-900 whitespace-nowrap :text-white m">
                             {{ $assignment->title }} <br>
                         </th>
                         <td class="md:px-6 px-16 py-4 text-center whitespace-nowrap px-3 font-medium">
