@@ -163,7 +163,7 @@
             <div class="col-2 lg:ml-10 md:ml-0 ml-0 sm:mt-0 mt-3 md:mr-0 mr-16">
                 <h2 class="font-bold text-base uppercase opacity-50">Sosmed</h2>
 
-                <div class="flex flex-col mt-7  md:mt-8 h-40 justify-between text-sm font-medium ">
+                <div class="flex flex-col mt-5  md:mt-8 h-40 justify-between text-sm font-medium ">
                     <h3 class="text-black hover:text-blue-300 pointer" onclick="location.href='https://www.instagram.com/diandraafs_?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=='">@diandraafs_</h3>
                     <h3 class="text-black hover:text-blue-300 pointer" onclick="location.href='https://www.instagram.com/tznvn?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=='">@tznvn_</h3>
                     <h3 class="text-black hover:text-blue-300 pointer" onclick="location.href='https://www.instagram.com/andrby_?utm_source=ig_web_button_share_sheet&igsh=OGQ5ZDc2ODk2ZA=='">@andrby_</h3>

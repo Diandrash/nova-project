@@ -56,8 +56,8 @@ class MaterialController extends Controller
             $file = $request->file('file');
             $fileName = $file->getClientOriginalName();
             // $file->storeAs('public/materials', $fileName); // Simpan file ke dalam folder public/materials
-            $file->move('materials', $fileName);
-            // $file->move(public_path('materials'), $fileName);
+            // $file->move('materials', $fileName);
+            $file->move(public_path('materials'), $fileName);
         }
     
         // return 1;
