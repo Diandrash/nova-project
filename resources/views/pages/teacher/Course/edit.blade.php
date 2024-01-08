@@ -26,7 +26,7 @@
                 <input type="text" name="name" value="{{ $course->name }}" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-base font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-2.5 py-3" placeholder="Content Creator Class" required>
             </div>
             <div class="input description mt-6">
-                <label for="description" class="block mb-2 text-base font-medium text-gray-900">Assignment description</label>
+                <label for="description" class="block mb-2 text-base font-medium text-gray-900">Course description</label>
                 <input id="description" type="hidden" value="{{ $course->description }}" name="description">
                 <trix-editor input="description" class="h-56 trix-content"></trix-editor>
             </div>

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->dateTime('deadline');
             $table->text('files')->nullable();
+            $table->text('file_name')->nullable();
             $table->timestamps();
     
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');

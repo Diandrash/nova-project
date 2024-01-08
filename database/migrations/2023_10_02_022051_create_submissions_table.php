@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('submission_text')->nullable();
             $table->text('submitted_files')->nullable();
+            $table->text('submitted_filename')->nullable();
             $table->boolean('status')->default(0); // Menambahkan kolom status
             $table->integer('mark')->nullable();
             $table->timestamps();

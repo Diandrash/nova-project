@@ -14,6 +14,7 @@ class Assignment extends Model
         'description',
         'deadline',
         'files',
+        'file_name',
     ];
 
 

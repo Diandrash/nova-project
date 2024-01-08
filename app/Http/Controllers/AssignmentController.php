@@ -11,6 +11,8 @@ use App\Http\Requests\StoreAssignmentRequest;
 use App\Http\Requests\UpdateAssignmentRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\DB; // Import DB Facade
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
 
 class AssignmentController extends Controller
 {
@@ -103,7 +105,7 @@ class AssignmentController extends Controller
 
         // Upload file tugas jika ada
         if ($request->hasFile('files')) {
-            // $file = $request->file('files');
+            $file = $request->file('files');
             // $originalName = $file->getClientOriginalName();
             // $fileName = str_replace(' ', '_', $originalName); // Ganti spasi dengan garis bawah
             $uploadedFileUrl = cloudinary()->uploadFile($request->file('files')->getRealPath())->getSecurePath();
@@ -118,6 +120,7 @@ class AssignmentController extends Controller
             'description' => $request->input('description'),
             'deadline' => $request->input('deadline'),
             'files' => $url,
+            'file_name' => $file->getClientOriginalName(),
         ]);
 
         // Membuat entri Submission untuk setiap siswa dalam course assignment
@@ -193,31 +196,31 @@ class AssignmentController extends Controller
             'description' => 'max:1080',
             'deadline' => 'required',
             'course_id' => 'required',
+            'file_name' => 'required',
             'files' => 'file|mimes:pdf,doc,docx,pptx,xls,jpg,jpeg,png',
         ]);
     
         // Temukan assignment yang akan diperbarui
         $assignment = Assignment::findOrFail($id);
     
-        // Inisialisasi nama file ke null
-        $fileName = $assignment->files;
+        // Inisialisasi URL file ke URL file yang sudah ada
+        $url = $assignment->files;
     
-        // Upload file tugas jika ada
+        // Upload file tugas baru jika ada
         if ($request->hasFile('files')) {
-            // $file = $request->file('files');
-            // $originalName = $file->getClientOriginalName();
-            // $fileName = str_replace(' ', '_', $originalName); // Ganti spasi dengan garis bawah
-            // $file->move('Assignments', $fileName);
-
+            $file = $request->file('files');
+    
+            // Upload file ke Cloudinary dengan menggunakan nama file asli
             $uploadedFileUrl = cloudinary()->uploadFile($request->file('files')->getRealPath())->getSecurePath();
             $url = $uploadedFileUrl;
     
-            // Hapus file lama jika berhasil diunggah yang baru
+            // Hapus file Cloudinary lama jika berhasil diunggah yang baru
             if ($assignment->files) {
-                $oldFilePath = public_path('Assignments/' . $assignment->files);
-                if (file_exists($oldFilePath)) {
-                    unlink($oldFilePath);
-                }
+                // Ambil public ID dari URL Cloudinary yang lama
+                $publicId = pathinfo($assignment->files, PATHINFO_FILENAME);
+    
+                // Hapus file dari Cloudinary berdasarkan public ID
+                Cloudinary::destroy($publicId);
             }
         }
     
@@ -228,12 +231,14 @@ class AssignmentController extends Controller
             'description' => $request->input('description'),
             'deadline' => $request->input('deadline'),
             'files' => $url,
+            'file_name' => $request->input('file_name'),
         ]);
     
         $course = Course::where('id', $validatedData['course_id'])->first();
         Alert::success('Success', 'Assignment successfully updated');
         return redirect()->route('assignment.index', ['course_id' => $validatedData['course_id'], 'courseId' => $validatedData['course_id'], 'course' => $course]);
     }
+    
     
 
     /**
