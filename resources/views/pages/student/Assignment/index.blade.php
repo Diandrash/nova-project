@@ -58,13 +58,13 @@
     <h1 class="text-sm opacity-70 mt-3">Attachment :</h1>
     @if ($assignment->files)
         <div class="attachment-item  flex justify-between mt-2 px-5 py-3 md:w-6/12 w-full bg-gray-200 hover:bg-blue-400 cursor-pointer">
-            <div class="file-place self-center"  onclick="window.open('{{ asset('assignments/' . $assignment->files) }}', '_blank');">
+            <div class="file-place self-center"  onclick="window.open('{{ $assignment->files }}', '_blank');">
                 <div class="text-left self-center flex">
                     <i class="fa-solid fa-paperclip  text-base self-center"></i>
-                    <h2 class="text-base font-semibold ml-3 self-center">{{ $assignment->files }}</h2>
+                    <h2 class="text-base font-semibold ml-3 self-center">{{ $assignment->file_name }}</h2>
                 </div>
             </div>
-            <a class="text-right self-center" href="{{ asset('assignments/' . $assignment->files) }}" download>
+            <a class="text-right self-center" href="{{ $assignment->files }}" download>
                 <i class="fa-solid fa-download text-gray-800 hover:text-white cursor-pointer self-center"></i>
             </a>
             
