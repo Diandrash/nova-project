@@ -56,11 +56,11 @@
                 <th scope="row" class="px-3 py-4 font-medium capitalize text-gray-900 whitespace-nowrap :text-white">
                     <h2 class="md:text-base text-sm">{{ $material->title }}</h2>
                 </th>
-                <td class="text-left py-4 cursor-pointer" onclick="window.open('{{ asset('materials/' . $material->file_path) }}', '_blank');">
+                <td class="text-left py-4 cursor-pointer" onclick="window.open('{{$material->file_path}}', '_blank');">
                     <h3 class="text-blue-800 hover:text-blue-500 font-bold md:text-base text-sm">{{ $material->file_path }}</h3>
                 </td>
                 <td class="action text-center px-4 py-4 flex justify-center">
-                    <a href="{{ asset('materials/' . $material->file_path) }}" download>
+                    <a href="{{ $material->file_path }}" download>
                         <i class="fa-solid fa-download md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-green-700 rounded"></i>
                     </a>
                     <i class="fa-solid fa-pencil md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-amber-500 rounded" onclick="location.href='/teacher/materials/{{ $material->id }}/edit'"></i>

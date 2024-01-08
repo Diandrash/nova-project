@@ -9,6 +9,8 @@ use App\Http\Requests\StoreMaterialRequest;
 use App\Http\Requests\UpdateMaterialRequest;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Storage;
+use CloudinaryLabs\CloudinaryLaravel\MediaAlly;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class MaterialController extends Controller
 {
@@ -50,25 +52,24 @@ class MaterialController extends Controller
             'course_id' => 'required',
             'file' => 'required|file|mimes:pdf,doc,docx,pptx,xls,jpg,jpeg,png', // Sesuaikan dengan jenis file yang diizinkan
         ]);
-    
+        
         // Upload file materi
         if ($request->hasFile('file')) {
-            $file = $request->file('file');
-            $fileName = $file->getClientOriginalName();
-            // $file->storeAs('public/materials', $fileName); // Simpan file ke dalam folder public/materials
-            $file->move('materials', $fileName);
-            // $file->move(public_path('materials'), $fileName);
+
+            $uploadedFileUrl = cloudinary()->uploadFile($request->file('file')->getRealPath())->getSecurePath();
+            $url = $uploadedFileUrl;
+
         }
-    
-        // return 1;
-        // Simpan data baru ke dalam tabel dengan menyertakan path file
+        
+
         Material::create([
             'title' => $validatedData['title'],
             'course_id' => $validatedData['course_id'],
-            'file_path' => $fileName, // Simpan path file dalam basis data
+            'file_path' => $url, // Simpan path file dalam basis data
         ]);
-    
-        // $courseId = $request->input('courseId');
+        
+
+        // return $url;
         Alert::success('Success', 'Material added successfully');
         return redirect()->route('materials.indexTeacher', ['courseId' => $request->course_id]);
     }

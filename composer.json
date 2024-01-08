@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.1",
+        "cloudinary-labs/cloudinary-laravel": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
@@ -13,7 +14,8 @@
         "nesbot/carbon": "*",
         "predis/predis": "^2.2",
         "realrashid/sweet-alert": "^7.1",
-        "twbs/bootstrap-icons": "^1.11"
+        "twbs/bootstrap-icons": "^1.11",
+        "ueberdosis/pandoc": "^0.9.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
