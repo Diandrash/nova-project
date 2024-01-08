@@ -231,7 +231,7 @@ class CourseController extends Controller
         Course::where('id', $course->id)->update($ValidatedData);
 
         Alert::success('Success', 'Course Has Been Updated');
-        return redirect()->route('course.showStudent', ['course' => $course->id]);
+        return redirect()->route('course.showTeacher', ['course' => $course->id]);
     }
 
     /**
