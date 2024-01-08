@@ -92,7 +92,7 @@ class SubmissionController extends Controller
             // $fileName = str_replace(' ', '_', $originalName);
             // $file->move(public_path('Submissions'), $fileName); // Simpan file di dalam /public/Submissions
             // $pathToFile = $fileName; // Simpan path file
-            $uploadedFileUrl = cloudinary()->uploadFile($request->file('submiited_files')->getRealPath())->getSecurePath();
+            $uploadedFileUrl = cloudinary()->uploadFile($request->file('submitted_files')->getRealPath())->getSecurePath();
             $submission->submitted_filename = $file->getClientOriginalName();
             $url = $uploadedFileUrl;
             $submission->submitted_files = $url;
