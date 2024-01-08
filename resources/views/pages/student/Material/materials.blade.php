@@ -56,9 +56,9 @@
                         <th scope="row" class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                             <h2 class="text-base">{{ $material->title }}</h2>
                         </th>
-                        <td class="text-left py-4 cursor-pointer flex" onclick="window.open('{{ asset('materials/' . $material->file_path) }}', '_blank');">
+                        <td class="text-left py-4 cursor-pointer flex" onclick="window.open('{{ $material->file_path }}', '_blank');">
                             <i class="fa-solid {{ App\Helpers\FileHelper::getFileIconClass(pathinfo($material->file_path, PATHINFO_EXTENSION)) }} text-{{ $randomColor }} text-medium self-center mr-2"></i>
-                            <h3 class="text-blue-800 hover:text-blue-500 font-bold text-base">{{ $material->file_path }}</h3>
+                            <h3 class="text-blue-800 hover:text-blue-500 font-bold text-base">{{ $material->file_name }}</h3>
                         </td>
                         <td class="px-6 py-4 text-center">
                             <h3 class="text-black font-medium text-base">{{ $material->course->instructor->fullname }}</h3>

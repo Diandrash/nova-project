@@ -13,7 +13,8 @@ class Material extends Model
     protected $fillable = [
         'course_id',
         'title',
-        'file_path'
+        'file_path',
+        'file_name'
     ];
 
     public function course()

@@ -46,33 +46,34 @@ class MaterialController extends Controller
 
     public function store(StoreMaterialRequest $request)
     {
-        // return $request; 
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'course_id' => 'required',
-            'file' => 'required|file|mimes:pdf,doc,docx,pptx,xls,jpg,jpeg,png', // Sesuaikan dengan jenis file yang diizinkan
+            'file' => 'required|file|mimes:pdf,doc,docx,pptx,xls,jpg,jpeg,png',
         ]);
-        
+    
         // Upload file materi
         if ($request->hasFile('file')) {
-
-            $uploadedFileUrl = cloudinary()->uploadFile($request->file('file')->getRealPath())->getSecurePath();
+            $file = $request->file('file');
+    
+            // Upload file ke Cloudinary dengan menggunakan nama file asli
+            $uploadedFileUrl = cloudinary()->upload($file->getRealPath(), [
+                'public_id' => pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME),
+            ])->getSecurePath();
             $url = $uploadedFileUrl;
-
         }
-        
-
+    
         Material::create([
             'title' => $validatedData['title'],
             'course_id' => $validatedData['course_id'],
             'file_path' => $url, // Simpan path file dalam basis data
+            'file_name' => $file->getClientOriginalName(),
         ]);
-        
-
-        // return $url;
+    
         Alert::success('Success', 'Material added successfully');
         return redirect()->route('materials.indexTeacher', ['courseId' => $request->course_id]);
     }
+    
 
     public function show($id)
     {

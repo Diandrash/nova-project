@@ -57,7 +57,7 @@
                     <h2 class="md:text-base text-sm">{{ $material->title }}</h2>
                 </th>
                 <td class="text-left py-4 cursor-pointer" onclick="window.open('{{$material->file_path}}', '_blank');">
-                    <h3 class="text-blue-800 hover:text-blue-500 font-bold md:text-base text-sm">{{ $material->file_path }}</h3>
+                    <h3 class="text-blue-800 hover:text-blue-500 font-bold md:text-base text-sm">{{ $material->file_name }}</h3>
                 </td>
                 <td class="action text-center px-4 py-4 flex justify-center">
                     <a href="{{ $material->file_path }}" download>

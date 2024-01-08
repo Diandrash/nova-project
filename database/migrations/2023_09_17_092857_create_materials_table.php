@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('course_id');
             $table->string('title');
+            $table->string('file_name')->nullable();
             $table->timestamps();
         });
     }
