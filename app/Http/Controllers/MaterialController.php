@@ -119,22 +119,15 @@ class MaterialController extends Controller
 
     public function destroy($id)
     {
-        // Hapus data dari tabel
+        // Temukan data dari tabel
         $material = Material::findOrFail($id);
     
-        // Simpan path file sebelum dihapus dari database
-        $filePath = $material->file_path;
+        // Hapus file dari Cloudinary berdasarkan public ID
+        $publicId = pathinfo($material->file_path, PATHINFO_FILENAME);
+        Cloudinary::destroy($publicId);
     
         // Hapus data dari database
         $material->delete();
-    
-        // Ubah nama file untuk menangani karakter khusus
-        $encodedFilePath = urlencode($filePath);
-    
-        // Hapus file fisik
-        if (Storage::exists('public/materials/' . $encodedFilePath)) {
-            Storage::delete('public/materials/' . $encodedFilePath);
-        }
     
         Alert::success('Success', 'Material deleted successfully');
         return redirect()->back();
