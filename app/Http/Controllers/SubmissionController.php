@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreSubmissionRequest;
 use App\Http\Requests\UpdateSubmissionRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+
 
 class SubmissionController extends Controller
 {
