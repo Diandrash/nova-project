@@ -107,7 +107,7 @@
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Confirm Leave'
+            confirmButtonText: 'Confirm Delete'
         }).then((result) => {
             // Jika pengguna mengonfirmasi, kirim formulir terkait
             if (result.isConfirmed) {

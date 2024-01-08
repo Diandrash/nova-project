@@ -103,10 +103,12 @@ class AssignmentController extends Controller
 
         // Upload file tugas jika ada
         if ($request->hasFile('files')) {
-            $file = $request->file('files');
-            $originalName = $file->getClientOriginalName();
-            $fileName = str_replace(' ', '_', $originalName); // Ganti spasi dengan garis bawah
-            $file->move('Assignments', $fileName);
+            // $file = $request->file('files');
+            // $originalName = $file->getClientOriginalName();
+            // $fileName = str_replace(' ', '_', $originalName); // Ganti spasi dengan garis bawah
+            $uploadedFileUrl = cloudinary()->uploadFile($request->file('files')->getRealPath())->getSecurePath();
+            $url = $uploadedFileUrl;
+            // $file->move('Assignments', $fileName);
         }
 
         // Simpan data baru ke dalam tabel Assignment, termasuk path file jika ada
@@ -115,7 +117,7 @@ class AssignmentController extends Controller
             'course_id' => $validatedData['course_id'],
             'description' => $request->input('description'),
             'deadline' => $request->input('deadline'),
-            'files' => $fileName,
+            'files' => $url,
         ]);
 
         // Membuat entri Submission untuk setiap siswa dalam course assignment
@@ -202,10 +204,13 @@ class AssignmentController extends Controller
     
         // Upload file tugas jika ada
         if ($request->hasFile('files')) {
-            $file = $request->file('files');
-            $originalName = $file->getClientOriginalName();
-            $fileName = str_replace(' ', '_', $originalName); // Ganti spasi dengan garis bawah
-            $file->move('Assignments', $fileName);
+            // $file = $request->file('files');
+            // $originalName = $file->getClientOriginalName();
+            // $fileName = str_replace(' ', '_', $originalName); // Ganti spasi dengan garis bawah
+            // $file->move('Assignments', $fileName);
+
+            $uploadedFileUrl = cloudinary()->uploadFile($request->file('files')->getRealPath())->getSecurePath();
+            $url = $uploadedFileUrl;
     
             // Hapus file lama jika berhasil diunggah yang baru
             if ($assignment->files) {
@@ -222,7 +227,7 @@ class AssignmentController extends Controller
             'course_id' => $validatedData['course_id'],
             'description' => $request->input('description'),
             'deadline' => $request->input('deadline'),
-            'files' => $fileName,
+            'files' => $url,
         ]);
     
         $course = Course::where('id', $validatedData['course_id'])->first();
