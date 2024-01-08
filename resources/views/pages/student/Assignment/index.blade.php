@@ -92,10 +92,10 @@
 
         @if ($submission->status == 1)
             <div class="work-item  flex justify-between mt-2 px-5 py-3 md:w-6/12 w-full bg-gray-200 hover:bg-blue-400 cursor-pointer">
-                <div class="file-place"  onclick="window.open('{{ asset('submissions/' . $submission->submitted_files) }}', '_blank');">
+                <div class="file-place"  onclick="window.open('{{$submission->submitted_files }}', '_blank');">
                     <div class="text-left self-center flex">
                         <i class="fa-solid fa-paperclip  text-base self-center"></i>
-                        <h2 class="text-base font-semibold ml-3">{{ $submission->submitted_files }}</h2>
+                        <h2 class="text-base font-semibold ml-3">{{ $submission->submitted_filename }}</h2>
                     </div>
                 </div>
                 <a class="text-right self-center" href="{{ asset('assignments/' . $assignment->files) }}" download>

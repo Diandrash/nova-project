@@ -85,12 +85,13 @@ class SubmissionController extends Controller
         // Lakukan pembaruan data submission
         if ($request->hasFile('submitted_files')) {
             // // Jika ada file yang diunggah, lakukan pembaruan
-            // $file = $request->file('submitted_files');
+            $file = $request->file('submitted_files');
             // $originalName = $file->getClientOriginalName();
             // $fileName = str_replace(' ', '_', $originalName);
             // $file->move(public_path('Submissions'), $fileName); // Simpan file di dalam /public/Submissions
             // $pathToFile = $fileName; // Simpan path file
             $uploadedFileUrl = cloudinary()->uploadFile($request->file('submiited_files')->getRealPath())->getSecurePath();
+            $submission->submitted_filename = $file->getClientOriginalName();
             $url = $uploadedFileUrl;
             $submission->submitted_files = $url;
         }

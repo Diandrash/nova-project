@@ -59,7 +59,7 @@
                     </th>
                     <td class="text-left py-4 cursor-pointer">
                         @if ($submission->submitted_files)
-                            <h3 class="text-blue-900 hover:text-blue-500 font-bold md:text-base text-sm"onclick="window.open('{{ asset('submissions/' . $submission->submitted_files) }}', '_blank');">{{ $submission->submitted_files }}</h3>
+                            <h3 class="text-blue-900 hover:text-blue-500 font-bold md:text-base text-sm"onclick="window.open('{{ $submission->submitted_files }}', '_blank');">{{ $submission->submitted_filename }}</h3>
                         @endif
                         @if (!$submission->submitted_files)
                             <h3 class=" font-medium text-sm italic opacity-70">Not Yet</h3>
@@ -91,7 +91,7 @@
                     </th>
 
                     <td class="text-center py-4">
-                        <a href="{{ asset('submissions/' . $submission->submitted_files) }}" download>
+                        <a href="{{ $submission->submitted_files }}" download>
                             <i class="fa-solid fa-download md:text-base text-sm text-white hover:text-gray-300 p-2 mx-1 bg-violet-500 rounded" ></i>
                         </a>
                         @if ($submission->status == 1)
