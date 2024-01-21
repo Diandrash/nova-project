@@ -18,8 +18,7 @@
                 }
             }
         </style>
-        {{-- <link rel="stylesheet" href="/css/main.css"> --}}
-        {{-- <link rel="stylesheet" href="/css/animate.css"> --}}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
         <link rel="stylesheet" href="{{ asset('css/viewer.css') }}">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     </head>
@@ -44,7 +43,6 @@
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="https://kit.fontawesome.com/1319cd5cd7.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
