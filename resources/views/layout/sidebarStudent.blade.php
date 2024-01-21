@@ -5,20 +5,20 @@
         </div>
     </a>
     <a href="/student" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
-        <img src=" {{ (request()->is('student')) ? '/icons/HomeFilled.svg' : '/icons/Home.svg' }}" class="w-10" alt="">
+        <img src=" {{ (request()->is('student')) ? 'https://res.cloudinary.com/dlulk3leh/image/upload/v1705799226/Icons/homeFilled.svg' : 'https://res.cloudinary.com/dlulk3leh/image/upload/v1705799225/Icons/home.svg' }}" class="w-10" alt="">
     </a>
     <a href="/student/courses" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
-        <img src=" {{ (request()->is('student/courses*')) ? '/icons/GraduationFilled.svg' : '/icons/Graduation Cap.svg' }}" class="w-10" alt="">
+        <img src=" {{ (request()->is('student/courses*')) ? 'https://res.cloudinary.com/dlulk3leh/image/upload/v1705799200/Icons/graduationFilled.svg' : 'https://res.cloudinary.com/dlulk3leh/image/upload/v1705799152/Icons/graduation.svg' }}" class="w-10" alt="">
     </a>
     <a href="/student/assignments" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
-        <img src=" {{ (request()->is('student/assignments*')) ? '/icons/BackpackFilled.svg' : '/icons/Backpack.svg' }}" class="w-10" alt="">
+        <img src=" {{ (request()->is('student/assignments*')) ? 'https://res.cloudinary.com/dlulk3leh/image/upload/v1705799111/Icons/backpackFilled.svg' : 'https://res.cloudinary.com/dlulk3leh/image/upload/v1705799031/Icons/backpack.svg' }}" class="w-10" alt="">
     </a>
     <a href="" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
     </a>
     
     
     <a href="javascript:void(0);" onclick="confirmLogout()" class="relative inline-flex items-center justify-center md:ml-0 ml-2">
-        <img src="/icons/Shutdown.svg" class="w-10 mb-3" alt="">
+        <img src="https://res.cloudinary.com/dlulk3leh/image/upload/v1705799231/Icons/shutdown.svg" class="w-10 mb-3" alt="">
     </a>
 
 </div>

@@ -77,7 +77,7 @@
   <div class="register mt-16" id="register">
     <div class="content-area flex flex-wrap">
         <div class="image-area md:flex hidden justify-center md:w-5/12 w-full bg-amber-300">
-            <img class="w-8/12 mt-5" src="{{ asset('img/ImageRegister.png') }}" alt="">
+            <img class="w-8/12 mt-5" src="https://res.cloudinary.com/dlulk3leh/image/upload/v1705798679/wnadbvbkrej2t9vqhukd.png" alt="">
         </div>
         <div class="input-area md:w-7/12 w-full md:bg-white bg-amber-300">
             <div class="content-area mx-10 my-10">

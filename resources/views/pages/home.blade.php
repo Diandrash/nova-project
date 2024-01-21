@@ -93,7 +93,7 @@
         <button class="px-16 py-3 md:text-base text-sm bg-amber-300 hover:bg-amber-500 font-bold mt-6 rounded-full" onclick="location.href='/login'">Join Now</button>
       </div>
       <div class="image-content md:w-5/12 w-full">
-        <img src="{{ asset('img/3.png') }}" alt="">
+        <img src="https://res.cloudinary.com/dlulk3leh/image/upload/v1705798555/gzexm4utjcs5xzkqpsx6.png" alt="">
       </div>
     </div>
   </section>
@@ -101,7 +101,7 @@
   <section class="about z-10 pb-24" id="about" data-aos="flip-left" data-aos-duration="500">
     <div class="content-area md:mt-10 mt-24 flex flex-wrap md:justify-evenly justify-center md:mx-24 mx-10">
       <div class="image-area md:w-3/12 w-8/12">
-        <img src="{{ asset('img/logoremove.png') }}" alt="">
+        <img src="https://res.cloudinary.com/dlulk3leh/image/upload/v1705798701/rewubb43bxauxavl5bnm.png" alt="">
       </div>
       <div class="text-area mt-5 md:w-6/12 w-auto">
         <h2 class="md:text-4xl text-3xl font-semibold md:text-left text-center">About Us</h2>
@@ -135,7 +135,7 @@
         </div>
       </div>
       <div class="image-content md:w-3/12 w-9/12 md:mr-16 mr-0 md:mt-0 mt-5">
-        <img class="" src="{{ asset('img/LoginPeople.png') }}" alt="">
+        <img class="" src="https://res.cloudinary.com/dlulk3leh/image/upload/v1705798683/qje9pxjdwzlax7d4mgiw.png" alt="">
       </div>
     </div>
   </section>
@@ -143,7 +143,7 @@
   <section class="footer z-10 mt-16 mb-16 h-72 border-t-2 border-purple-200" id="footer">
     <div class="big-area pt-16 sm:mx-16 mx-8  h-full flex justify-between flex-wrap">
         <div class="logo-area w-96">
-            <img class="w-64 " src="{{ asset('img/logolandscape.png') }}" alt="">
+            <img class="w-64 " src="https://res.cloudinary.com/dlulk3leh/image/upload/v1705798700/iedll1b959byjphc91dg.png" alt="">
             <h1 class="text-xl font-semibold opacity-70 mt-6">Nova E-Learning Web Apps</h1>
         </div>
 

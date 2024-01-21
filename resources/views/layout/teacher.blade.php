@@ -44,7 +44,8 @@
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <script src="https://kit.fontawesome.com/1319cd5cd7.js" crossorigin="anonymous"></script>
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
         <script>
             // use this simple function to automatically focus on the next input
