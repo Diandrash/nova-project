@@ -117,19 +117,19 @@
         <div class="feature lists mt-4">
 
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('icons/Vector.svg') }}" alt="">
+            <img class="w-8" src="{{ asset('/icons/Vector.svg') }}" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Provide basic consepts</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('icons/Vector.svg') }}" alt="">
+            <img class="w-8" src="{{ asset('/icons/Vector.svg') }}" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Solve complicated sums</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('icons/Vector.svg') }}" alt="">
+            <img class="w-8" src="{{ asset('/icons/Vector.svg') }}" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Understand difficult topics</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('icons/Vector.svg') }}" alt="">
+            <img class="w-8" src="{{ asset('/icons/Vector.svg') }}" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Interact with the teachers</h1>
           </div>
         </div>
@@ -173,13 +173,13 @@
 
             <div class="col-3 sm:w-auto md:w-36 ml-0 lg:ml-10 sm:mt-0 mt-3 md:mt-0">
 
-                <h2 class="font-bold text-base uppercase opacity-50">Tentang Kami</h2>
+                <h2 class="font-bold text-base uppercase opacity-50">About Us</h2>
 
                 <div class="flex flex-col md:mt-6 mt-7 h-40 justify-between text-sm font-medium ">
                     <h3>Home</h3>
                     <h3>About Us</h3>
                     <h3>Contact</h3>
-                    <h3>Pusat bantuan</h3>
+                    <h3>Features</h3>
                 </div>
             </div>
 
