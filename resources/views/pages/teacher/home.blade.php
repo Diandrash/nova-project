@@ -97,7 +97,7 @@
                 </tbody>
             </table>
             <div class="text-more flex justify-center text-base font-semibold mt-3 text-blue-800 hover:text-blue-600 cursor-pointer">
-                <h2 onclick="location.href='/student/assignments'">View All Assignments</h2>
+                <h2 onclick="location.href='/teacher/assignments'">View All Assignments</h2>
             </div>
         </div>
     </div>

@@ -117,19 +117,19 @@
         <div class="feature lists mt-4">
 
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('/icons/Vector.svg') }}" alt="">
+            <img class="w-8" src="https://res.cloudinary.com/dlulk3leh/image/upload/v1710726552/Icons/check.svg" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Provide basic consepts</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('/icons/Vector.svg') }}" alt="">
+            <img class="w-8" src="https://res.cloudinary.com/dlulk3leh/image/upload/v1710726552/Icons/check.svg" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Solve complicated sums</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('/icons/Vector.svg') }}" alt="">
+            <img class="w-8" src="https://res.cloudinary.com/dlulk3leh/image/upload/v1710726552/Icons/check.svg" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Understand difficult topics</h1>
           </div>
           <div class="list flex md:mt-10 mt-8">
-            <img class="w-8" src="{{ asset('/icons/Vector.svg') }}" alt="">
+            <img class="w-8" src="https://res.cloudinary.com/dlulk3leh/image/upload/v1710726552/Icons/check.svg" alt="">
             <h1 class="md:text-3xl text-xl font-bold ml-5">Interact with the teachers</h1>
           </div>
         </div>
